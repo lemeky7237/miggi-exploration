@@ -11,6 +11,9 @@
     ],
     "client": [
       "com.miggi.exploration.client.MiggiClient"
+    ],
+    "fabric-client-gametest": [
+      "com.miggi.exploration.client.test.MiggiClientGameTest"
     ]
   },
   "depends": {

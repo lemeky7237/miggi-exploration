@@ -83,3 +83,46 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A && git commit -qm "Build ${GITHUB_SHA::7}"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" jar
+
+  client-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '9.7.1'
+      - name: Install software rendering
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q xvfb mesa-utils libgl1-mesa-dri mesa-vulkan-drivers
+      - name: Run the game with the automated in-game test
+        shell: bash
+        run: |
+          set +e
+          timeout 35m xvfb-run -a -s "-screen 0 1920x1080x24" gradle runClientGameTest --stacktrace > client.log 2>&1
+          echo "EXIT CODE $?" >> client.log
+          grep -E '\[MIGGI-TEST\]|EXIT CODE' client.log | tail -200
+          exit 0
+      - name: Publish screenshots and report to 'test-results' branch
+        if: always()
+        shell: bash
+        run: |
+          mkdir out
+          cp build/clientgametest/screenshots/*.png out/ 2>/dev/null || true
+          cp build/clientgametest/miggi-test-report.txt out/ 2>/dev/null || true
+          grep -E '\[MIGGI-TEST\]|ERROR|Exception|Caused by|WARN.*miggi|EXIT CODE' client.log | head -800 > out/important.log || true
+          tail -400 client.log > out/tail.log
+          gzip -c client.log > out/client.log.gz
+          cd out
+          git init -q -b test-results
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Client test ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" test-results

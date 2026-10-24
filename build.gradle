@@ -8,6 +8,15 @@ base { archivesName = project.archives_base_name }
 
 loom {
     splitEnvironmentSourceSets()
+    // In-game automated test (screenshots + checks), used by the client-test CI job.
+    runs {
+        clientGameTest {
+            client()
+            name "Client Game Test"
+            vmArg "-Dfabric.client.gametest"
+            runDir "build/clientgametest"
+        }
+    }
     mods {
         "miggi_exploration" {
             sourceSet sourceSets.main
