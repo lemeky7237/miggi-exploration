@@ -3,6 +3,9 @@
   "values": [
     "miggi_exploration:rune_stone",
     "miggi_exploration:cracked_rune_stone",
-    "miggi_exploration:glowing_rune_stone"
+    "miggi_exploration:glowing_rune_stone",
+    "miggi_exploration:mossy_rune_stone",
+    "miggi_exploration:rune_pillar",
+    "miggi_exploration:rune_altar"
   ]
 }

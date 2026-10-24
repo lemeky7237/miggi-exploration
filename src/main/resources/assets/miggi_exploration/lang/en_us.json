@@ -59,5 +59,14 @@
   "block.miggi_exploration.rune_stone": "Ancient Rune Stone",
   "block.miggi_exploration.cracked_rune_stone": "Cracked Rune Stone",
   "block.miggi_exploration.glowing_rune_stone": "Glowing Rune Stone",
-  "item.miggi_exploration.arcane_shard": "Arcane Shard"
+  "item.miggi_exploration.arcane_shard": "Arcane Shard",
+  "block.miggi_exploration.arcane_planks": "Arcane Planks",
+  "block.miggi_exploration.ancient_bark": "Ancient Arcane Bark",
+  "block.miggi_exploration.mossy_rune_stone": "Mossy Rune Stone",
+  "block.miggi_exploration.rune_pillar": "Rune Pillar",
+  "block.miggi_exploration.rune_altar": "Rune Altar",
+  "item.miggi_exploration.goblin_talisman": "Goblin Talisman",
+  "item.miggi_exploration.orc_fang": "Orc Fang",
+  "item.miggi_exploration.minotaur_horn": "Minotaur Horn",
+  "item.miggi_exploration.ancient_tablet": "Ancient Tablet"
 }

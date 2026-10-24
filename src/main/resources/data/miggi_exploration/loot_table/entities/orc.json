@@ -33,6 +33,21 @@
           "weight": 15
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:orc_fang"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.2
+        }
+      ]
     }
   ]
 }

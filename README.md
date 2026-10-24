@@ -271,3 +271,31 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 마법 나무의 자연 생성, 유적의 `/place structure` 및 자연 생성, 실제 텍스처 렌더링은 아직 인게임 검증이 필요합니다.
 - 외부 라이브러리나 모드는 이번 수정에서 추가하지 않았습니다.
 - 자료: https://www.minecraft.net/ko-kr/article/minecraft-java-edition-26-3 및 https://www.fabricmc.net/2026/09/15/263.html
+
+
+## v0.9 — 마법 숲 대형 콘텐츠 업데이트 (GPT 제작)
+### 이번에 바뀐 것
+- 신규 블록 **5종**: arcane_planks, ancient_bark, mossy_rune_stone, rune_pillar, rune_altar. 코드 등록, 블록 모델, 16×16 텍스처, 아이템 모델, 채굴 태그, 자기 자신을 드롭하는 테이블 추가.
+- 신규 수집 아이템 **4종**: goblin_talisman, orc_fang, minotaur_horn, ancient_tablet. 현재는 능력 없는 수집용 재료이며 제작법은 미구현.
+- 고블린/오크/미노타우르스의 기존 전리품을 유지하면서 전용 아이템 추가 드롭 풀을 연결 (고블린 10%, 오크 20%, 미노타우르스 100% 기본 수치).
+- 기본 마력목 외 **고대 마력목**(키 큰 변종)과 **어린 마력목**(작은 변종) 배치 데이터를 독립적으로 추가. 마법 숲 바이옴에 세 변종을 배치. 26.3에서 성공한 arcane_tree 데이터 구조를 재사용.
+- 신규 탐험 구조물 **마력 감시탑** 25×26×25: 4개 층과 계단·발광 룬 장식. 마법 숲 한정 구조물 등록 + NBT 수동 배치 지원.
+- 신규 **미궁 입구 템플릿** 43×17×43: 방 5개, 복도, 중앙 룬 제단·봉인문. 이 단계는 수동 템플릿이며 유적 하부에 연결되는 자동 생성·보스 AI 소환은 아직 적용하지 않음.
+- 기존 기능(탐험 도전과제, 일지, 칭호, RPG, 4종 몬스터 AI, 3D 모델, 바이옴, 원본 유적)은 유지.
+- 기존 build.gradle, gradle.properties, .github 및 fabric.mod.json은 수정하지 않음. **추가 의존성 없음**. Biolith는 기존처럼 바이옴 배치에 필요.
+### 아직 안 된 것 / 확인 필요
+- Minecraft 26.3 Actions 컴파일 및 전용 서버 부팅은 본 환경에서 검증하지 못함. JSON 문법/NBT 내부 좌표/ZIP 구조만 검증.
+- **특히 새 나무 feature JSON과 감시탑 worldgen 등록**은 서버 시작 시 레지스트리 검증을 통과해야 하므로 Actions 로그 확인 필수.
+- 현재 3D 애니메이션은 기존 구현을 유지. GeckoLib와 Lithostitched는 사용자 다운로드 확인되었지만 **모드 Java/Gradle 의존성에 통합하지 않았음**. 두 라이브러리 설치만으로 기능이 생기지는 않음.
+- 감시탑/원본 유적 자동 생성은 게임 월드에서 실측 검증 전. 신규 청크에서 /locate structure로 검사.
+- 미궁 입구 자동 연결 및 미노타우르스 보스방 소환, 상자 전리품, 퍼즐은 아직 미구현.
+- 미궁 템플릿은 평평한 빈 공간에 `/place template miggi_exploration:labyrinth_entrance ~ ~ ~`로 수동 배치하여 외형부터 확인.
+### 새 시험 명령어
+```
+/give @s miggi_exploration:ancient_tablet
+/give @s miggi_exploration:minotaur_horn
+/give @s miggi_exploration:rune_altar
+/place template miggi_exploration:arcane_watchtower ~ ~ ~
+/place template miggi_exploration:labyrinth_entrance ~ ~ ~
+/locate structure miggi_exploration:arcane_watchtower
+```
