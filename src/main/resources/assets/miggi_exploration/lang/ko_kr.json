@@ -53,5 +53,11 @@
   "entity.miggi_exploration.orc": "오크",
   "entity.miggi_exploration.wild_boar": "멧돼지",
   "entity.miggi_exploration.minotaur": "미노타우르스",
-  "biome.miggi_exploration.arcane_forest": "마법 숲"
+  "biome.miggi_exploration.arcane_forest": "마법 숲",
+  "block.miggi_exploration.arcane_log": "마력목 원목",
+  "block.miggi_exploration.arcane_leaves": "마력목 잎",
+  "block.miggi_exploration.rune_stone": "고대 룬 석재",
+  "block.miggi_exploration.cracked_rune_stone": "금 간 룬 석재",
+  "block.miggi_exploration.glowing_rune_stone": "발광 룬 석재",
+  "item.miggi_exploration.arcane_shard": "마력 파편"
 }

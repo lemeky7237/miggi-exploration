@@ -53,5 +53,11 @@
   "entity.miggi_exploration.orc": "Orc",
   "entity.miggi_exploration.wild_boar": "Wild Boar",
   "entity.miggi_exploration.minotaur": "Minotaur",
-  "biome.miggi_exploration.arcane_forest": "Arcane Forest"
+  "biome.miggi_exploration.arcane_forest": "Arcane Forest",
+  "block.miggi_exploration.arcane_log": "Arcane Wood",
+  "block.miggi_exploration.arcane_leaves": "Arcane Leaves",
+  "block.miggi_exploration.rune_stone": "Ancient Rune Stone",
+  "block.miggi_exploration.cracked_rune_stone": "Cracked Rune Stone",
+  "block.miggi_exploration.glowing_rune_stone": "Glowing Rune Stone",
+  "item.miggi_exploration.arcane_shard": "Arcane Shard"
 }

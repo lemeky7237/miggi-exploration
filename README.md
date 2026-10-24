@@ -187,3 +187,57 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 바닐라 placed feature 목록을 Minecraft 26.3 레지스트리에서 추출해, 마법 숲에 맞는 정상 나무 배치 기능을 재설정할 것. 다른 잘못된 ID가 있으면 서버가 추가 오류를 출력할 수 있다.
 - Biolith 설치 환경에서 바이옴 대체가 적용되는지 및 유적이 실제 바이옴 내부에 생성되는지 인게임 확인 필요.
 - GitHub 웹 업로드 시 원본에서 삭제되는 파일 없음.
+
+
+## v0.8.2 — 고대 유적 생성 진단 수정 (빌드/인게임 미검증)
+
+### 이번에 바뀐 것
+- `worldgen/structure/forgotten_ruin.json`: Jigsaw 크기 깊이 0 → 1, 시작 높이 오프셋 -1 → 0, 지형 적응 `beard_thin` → `none`으로 변경. 26.3에서 시작 템플릿 배치 성공 여부를 재검증하기 위한 진단용 조정임.
+- `worldgen/structure_set/forgotten_ruin.json`: 간격 55 → 18청크, 최소 분리 20 → 6청크. 마법 숲처럼 드문 바이옴에서 생성 후보를 늘림.
+- NBT 구조물, 마법 숲 바이옴, 몬스터, 탐험 도전과제, RPG 시스템, 빌드 설정 변경 없음. 삭제 파일 없음. 추가 의존성 없음.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25 GitHub Actions 컴파일·전용 서버 부팅 재확인 필요.
+- 게임에서 `/place structure miggi_exploration:forgotten_ruin`, `/locate structure miggi_exploration:forgotten_ruin` 성공 여부 미확인.
+- `/place template miggi_exploration:forgotten_ruin ~ ~ ~` 명령은 사용자 테스트에서 로딩 성공 메시지가 확인됨. 템플릿 로드 성공만으로 자동 생성까지 증명되지 않음.
+- 이미 생성된 청크에는 새로운 자연 구조물 생성이 소급 적용되지 않으므로 새 월드/미탐험 청크에서 테스트.
+- 마법 숲의 바이옴 규모는 시드에 따라 달라짐. 자동 생성은 마법 숲 내 배치 가능 후보 좌표가 있을 때만 일어남.
+- `/place structure`가 여전히 실패하면 전체 latest.log와 위치·바이옴 정보를 확인하여 원인을 재분석.
+
+
+## v0.8.3 — 마법 숲 전용 나무 / 신규 아이템 / 고대 유적 석재 (GPT)
+
+### 이번에 바뀐 것
+- `ArcaneContent.java`: 독립 블록 5종(마력목 원목·잎, 룬 석재·금 간 룬 석재·발광 룬 석재) + 수집 아이템 `arcane_shard` 등록.
+- 커스텀 16px 블록·아이템 텍스처와 블록상태·모델·아이템 정의, 한영 이름, 블록 채굴 드롭, 도구 태그 포함.
+- 마법 숲 바이옴의 식생 단계에 `arcane_tree` 기능 추가. Minecraft 26.3의 `worldgen/feature` + `placed_feature` 경로 적용. 마력목과 청록색 잎으로 구성된 높이 6~11블록 내외의 자연 생성 나무 시도.
+- 기존 `forgotten_ruin.nbt`를 33×13×33블록 석조 유적 템플릿으로 교체. 신규 룬 석재를 지면·기둥·중앙 제단에 사용. **수동 템플릿 배치는 자연 생성 성공을 보증하지 않음.**
+- 기존 13개 도전과제, RPG, mobs/ 서버 AI, .github, Gradle 설정 변경하지 않음. 새 외부 의존성 없음.
+- 삭제 파일 없음. 기존 유적 템플릿 NBT는 **교체**됨.
+
+### 아직 안 된 것 / 꼭 확인할 사항
+- Java 25 컴파일, Actions 전용 서버 부팅, 인게임 자연 나무 생성·유적 생성·텍스처 렌더링은 **이 환경에서 확인하지 못함**. 초록불은 서버 데이터가 로드됨을 뜻할 뿐 모든 월드 생성이 확인되지는 않음.
+- **26.3 API 확인 필요:** `ArcaneContent`의 `LeavesBlock` 생성자·레지스트리 키·BlockItem 메서드, `minecraft:tree`의 26.3 trunk/foliage 구조, `placed_feature`의 `in_square` modifier가 26.3에서 허용되는지. 실제 빌드 로그가 나오면 수정.
+- Biolith는 마법 숲 바이옴 자연 배치를 위해 클라이언트와 서버에 계속 필요.
+- 구조물의 `/place structure` 실패 원인이 수정되었다고 주장하지 않음. `/place template miggi_exploration:forgotten_ruin ~ ~ ~`부터 시험 권장.
+- 기존 월드의 **생성 완료된 청크**에는 새 나무·유적 자연 생성이 소급 적용되지 않음. 새 월드를 권장.
+- 원목은 v0.8.3에서 단순 큐브 블록이므로 가로눕힘 `axis` 속성이 없음. 잎은 드롭시 마력 파편이 약 12%로 나오도록 초기화. 새 묘목/재식재, 나무 제작대 가공, 전용 상자 보상은 차기 버전 과제.
+
+### 테스트 명령어
+```
+/give @s miggi_exploration:arcane_log 64
+/give @s miggi_exploration:arcane_leaves 64
+/give @s miggi_exploration:rune_stone 64
+/give @s miggi_exploration:glowing_rune_stone 64
+/give @s miggi_exploration:arcane_shard 16
+/locate biome miggi_exploration:arcane_forest
+/place feature miggi_exploration:arcane_tree
+/place template miggi_exploration:forgotten_ruin ~ ~ ~
+/place structure miggi_exploration:forgotten_ruin
+```
+
+### 기술 자료
+- https://www.fabricmc.net/2026/09/15/263.html
+- https://docs.fabricmc.net/develop/blocks/first-block
+- https://docs.fabricmc.net/develop/items/first-item
+- https://minecraft.wiki/w/Configured_feature

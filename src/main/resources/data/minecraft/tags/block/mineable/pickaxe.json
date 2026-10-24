@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "miggi_exploration:rune_stone",
+    "miggi_exploration:cracked_rune_stone",
+    "miggi_exploration:glowing_rune_stone"
+  ]
+}
