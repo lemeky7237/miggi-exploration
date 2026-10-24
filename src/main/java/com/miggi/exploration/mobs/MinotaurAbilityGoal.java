@@ -99,7 +99,6 @@ public class MinotaurAbilityGoal extends Goal {
                     if (e != t && !(e instanceof Player)) continue;
                     if (e.hurtServer(level, mob.damageSources().mobAttack(mob), damage(1.6f))) mob.hitsLanded++;
                     e.push(dir.x * 1.6, 0.6, dir.z * 1.6);
-                    e.hurtMarked = true;
                     phase = Phase.RECOVER;
                     timer = 12;
                     return;
@@ -136,7 +135,6 @@ public class MinotaurAbilityGoal extends Goal {
             if (e.hurtServer(level, mob.damageSources().mobAttack(mob), damage(2.0f))) mob.hitsLanded++;
             Vec3 away = e.position().subtract(mob.position()).multiply(1, 0, 1).normalize();
             e.push(away.x * 1.0, 0.7, away.z * 1.0);
-            e.hurtMarked = true;
         }
         level.sendParticles(ParticleTypes.EXPLOSION, c.x, c.y + 0.2, c.z, 3, 1.0, 0.1, 1.0, 0.0);
         level.sendParticles(ParticleTypes.CLOUD, c.x, c.y + 0.2, c.z, 20, 1.5, 0.1, 1.5, 0.05);

@@ -34,6 +34,5 @@ public class WildBoarEntity extends FantasyMonster {
     @Override protected void onHit(ServerLevel level, LivingEntity target, int anim) {
         Vec3 away = target.position().subtract(position()).multiply(1, 0, 1).normalize();
         target.push(away.x * 0.5, 0.45, away.z * 0.5);
-        target.hurtMarked = true;
     }
 }

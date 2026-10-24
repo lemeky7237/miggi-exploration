@@ -42,6 +42,5 @@ public class OrcEntity extends FantasyMonster {
             Vec3 side = new Vec3(-away.z, 0, away.x);
             target.push(side.x * 0.7 + away.x * 0.3, 0.15, side.z * 0.7 + away.z * 0.3);
         }
-        target.hurtMarked = true;
     }
 }
