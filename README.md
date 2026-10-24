@@ -51,3 +51,13 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 ## 빌드
 `main` 브랜치에 푸시하면 GitHub Actions가 컴파일하고, 전용 서버를 띄워 크래시 없이 켜지는지 확인한 뒤
 완성된 jar를 `jar` 브랜치에 올림. (공개 저장소라 Actions 무료)
+
+
+## RPG 시스템 추가 (GPT-6 초안)
+- `RpgData.java`: 레벨·현재 XP·현재 MP·아이템 보너스 MP의 별도 플레이어 attachment.
+- `RpgSystem.java`: 레벨 상한 150, 다음 레벨 XP `100 + 25*(level-1)`, Lv업당 최대 MP +20, 기본 100 MP, 4틱마다 1 MP 회복(20 TPS 기준 초당 5).
+- `RpgHud.java`: 26.3 `GuiGraphicsExtractor` 기반 숫자 HUD. 기존 탐험 일지와 분리.
+- `MiggiExploration.java`: 신규 탐험 도전과제가 처음 완료될 때만 RPG XP를 지급한다. **보상량은 아직 미확정이어서 임시로 도전과제당 100 XP** (`RpgSystem.CHALLENGE_REWARD_XP`).
+- 사망 시 attachment는 복사되어 레벨/XP가 유지된다. 사망 후 리스폰 시 `ServerPlayerEvents.AFTER_RESPAWN`에서 MP를 최대치로 복원한다.
+- 장래 아이템 확장용 `bonusMana` 필드를 지금부터 저장한다.
+- 주의: 이 수정본은 로컬에서 Java 25/Gradle 빌드가 불가능하여 컴파일 검증되지 않았다. GitHub Actions의 실제 빌드 및 서버 구동 로그를 확인한 뒤 통합해야 한다.

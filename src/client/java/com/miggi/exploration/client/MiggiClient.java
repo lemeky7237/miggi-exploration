@@ -27,6 +27,7 @@ public class MiggiClient implements ClientModInitializer {
             InputConstants.Type.KEYBOARD, SDLScancode.SDL_SCANCODE_J, category));
 
         HudElementRegistry.addLast(MiggiExploration.id("discovery_banner"), DiscoveryBanner::extract);
+        HudElementRegistry.addLast(MiggiExploration.id("rpg_hud"), RpgHud::extract);
 
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
     }

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -26,11 +27,26 @@ public class MiggiExploration implements ModInitializer {
         .initializer(() -> ExploreData.EMPTY)
         .syncWith(ExploreData.STREAM_CODEC, AttachmentSyncPredicate.targetOnly()));
 
+    public static final AttachmentType<RpgData> RPG_DATA = AttachmentRegistry.create(id("rpg"), b -> b
+        .persistent(RpgData.CODEC)
+        .copyOnDeath()
+        .initializer(() -> RpgData.INITIAL)
+        .syncWith(RpgData.STREAM_CODEC, AttachmentSyncPredicate.targetOnly()));
+
     @Override public void onInitialize() {
+        ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
+            if (!alive) {
+                RpgData data = newPlayer.getAttachedOrElse(RPG_DATA, RpgData.INITIAL);
+                newPlayer.setAttached(RPG_DATA, data.withMana(data.maxMana()));
+            }
+        });
         ServerTickEvents.END_SERVER_TICK.register(server -> {
-            if (server.getTickCount() % 10 != 0) return;
+            long tick = server.getTickCount();
+            if (tick % 10 != 0 && tick % RpgSystem.REGEN_INTERVAL_TICKS != 0) return;
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                if (!player.isSpectator()) update(player);
+                if (player.isSpectator()) continue;
+                if (tick % RpgSystem.REGEN_INTERVAL_TICKS == 0) RpgSystem.regenerate(player);
+                if (tick % 10 == 0) update(player);
             }
         });
     }
@@ -42,9 +58,16 @@ public class MiggiExploration implements ModInitializer {
         String biome = player.level().getBiome(player.blockPosition()).getRegisteredName();
         if (biome.contains(":") && !data.places().contains(biome)) data = data.withPlace(biome);
 
+        int newlyCompleted = 0;
         for (Challenges.Challenge c : Challenges.ALL) {
-            if (!data.challenges().contains(c.id()) && c.done(data)) data = data.withChallenge(c.id());
+            if (!data.challenges().contains(c.id()) && c.done(data)) {
+                data = data.withChallenge(c.id());
+                newlyCompleted++;
+            }
         }
         if (data != before) player.setAttached(DATA, data);
+        // Award only for the transition from incomplete to complete. Saved challenge IDs
+        // make this idempotent across ticks, reconnects and restarts.
+        if (newlyCompleted > 0) RpgSystem.addXp(player, newlyCompleted * RpgSystem.CHALLENGE_REWARD_XP);
     }
 }
