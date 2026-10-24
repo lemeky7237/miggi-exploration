@@ -5,7 +5,11 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import com.miggi.exploration.mobs.FantasyMonster;
+import com.miggi.exploration.mobs.MinotaurEntity;
+import com.miggi.exploration.mobs.ModMobs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -34,6 +38,16 @@ public class MiggiExploration implements ModInitializer {
         .syncWith(RpgData.STREAM_CODEC, AttachmentSyncPredicate.targetOnly()));
 
     @Override public void onInitialize() {
+        ModMobs.initialize();
+
+        // RPG XP for killing a fantasy monster (arrows etc. count: getEntity() is the shooter).
+        ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
+            if (entity instanceof FantasyMonster monster && source.getEntity() instanceof ServerPlayer killer) {
+                RpgSystem.addXp(killer, monster.rpgXp());
+                if (monster instanceof MinotaurEntity boss) boss.onBossDefeated(killer);
+            }
+        });
+
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             if (!alive) {
                 RpgData data = newPlayer.getAttachedOrElse(RPG_DATA, RpgData.INITIAL);

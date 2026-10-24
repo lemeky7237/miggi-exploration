@@ -2,7 +2,7 @@ name: Build Miggi Exploration Mod
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, dev]
 permissions:
   contents: write
 jobs:
@@ -73,6 +73,7 @@ jobs:
           name: miggi-exploration-jar
           path: build/libs/*.jar
       - name: Publish jar to 'jar' branch
+        if: github.ref == 'refs/heads/main'
         shell: bash
         run: |
           mkdir out && cp build/libs/*.jar out/ && rm -f out/*-sources.jar
