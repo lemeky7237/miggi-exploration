@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:mossy_rune_stone"
+        }
+      ]
+    }
+  ]
+}

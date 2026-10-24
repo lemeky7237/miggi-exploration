@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:tree",
+  "trunk_provider": {
+    "type": "minecraft:simple",
+    "state": {
+      "id": "miggi_exploration:arcane_log"
+    }
+  },
+  "foliage_provider": {
+    "type": "minecraft:simple",
+    "state": {
+      "id": "miggi_exploration:arcane_leaves",
+      "properties": {
+        "distance": "7",
+        "persistent": "false"
+      }
+    }
+  },
+  "trunk_placer": {
+    "type": "minecraft:straight_trunk_placer",
+    "base_height": 6,
+    "height_rand_a": 3,
+    "height_rand_b": 2
+  },
+  "foliage_placer": {
+    "type": "minecraft:blob_foliage_placer",
+    "radius": 3,
+    "offset": 0,
+    "height": 4
+  },
+  "minimum_size": {
+    "type": "minecraft:two_layers_feature_size",
+    "limit": 1,
+    "lower_size": 0,
+    "upper_size": 1
+  },
+  "decorators": [],
+  "ignore_vines": true,
+  "below_trunk_provider": {
+    "type": "minecraft:simple",
+    "state": {
+      "id": "minecraft:dirt"
+    }
+  }
+}

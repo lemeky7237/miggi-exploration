@@ -1,3 +1,16 @@
+
+## v0.9.1 - 서버 시작 오류 수정 (2026-10-24)
+
+**이번에 바뀐 것**
+- `ArcaneContent.java`에서 `ancient_bark`를 일반 `Block`으로 등록하면서 `Blocks.OAK_LOG` 속성을 복사한 오류 수정. 일반 `Block`은 `axis` 상태를 정의하지 않으므로 26.3에서 블록 초기화 중 `IllegalArgumentException` 발생.
+- `ancient_bark`의 속성 복사 원본을 `Blocks.OAK_PLANKS`로 수정. 기존 텍스처, 모델, 아이템 ID, 자연 생성 파일과 나머지 콘텐츠 유지.
+- 기존 `build.gradle`, `gradle.properties`, `.github` 변경 없음. 삭제 파일 없음. 새 의존성 없음.
+
+**아직 안 된 것 / 확인 필요**
+- 이 v0.9.1 ZIP의 Java 25 GitHub Actions 컴파일 및 전용 서버 부팅은 아직 검증하지 못함.
+- 인게임 모델, 나무 자연 생성 및 유적 배치의 실제 성공 여부는 별도 테스트 필요.
+- `ancient_bark`는 현재 방향 전환(`axis`) 없는 일반 블록이며, 향후 회전 가능한 원목이 필요하면 `RotatedPillarBlock` 및 블록스테이트 모델을 함께 구현해야 함.
+
 # 미끼탐험모드 (Miggi Exploration)
 
 Fabric 모드 · Minecraft 26.3 · Java 25 · Fabric Loader 0.19.5 · Fabric API 0.164.0+26.3
@@ -187,3 +200,137 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 바닐라 placed feature 목록을 Minecraft 26.3 레지스트리에서 추출해, 마법 숲에 맞는 정상 나무 배치 기능을 재설정할 것. 다른 잘못된 ID가 있으면 서버가 추가 오류를 출력할 수 있다.
 - Biolith 설치 환경에서 바이옴 대체가 적용되는지 및 유적이 실제 바이옴 내부에 생성되는지 인게임 확인 필요.
 - GitHub 웹 업로드 시 원본에서 삭제되는 파일 없음.
+
+
+## v0.8.2 — 고대 유적 생성 진단 수정 (빌드/인게임 미검증)
+
+### 이번에 바뀐 것
+- `worldgen/structure/forgotten_ruin.json`: Jigsaw 크기 깊이 0 → 1, 시작 높이 오프셋 -1 → 0, 지형 적응 `beard_thin` → `none`으로 변경. 26.3에서 시작 템플릿 배치 성공 여부를 재검증하기 위한 진단용 조정임.
+- `worldgen/structure_set/forgotten_ruin.json`: 간격 55 → 18청크, 최소 분리 20 → 6청크. 마법 숲처럼 드문 바이옴에서 생성 후보를 늘림.
+- NBT 구조물, 마법 숲 바이옴, 몬스터, 탐험 도전과제, RPG 시스템, 빌드 설정 변경 없음. 삭제 파일 없음. 추가 의존성 없음.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25 GitHub Actions 컴파일·전용 서버 부팅 재확인 필요.
+- 게임에서 `/place structure miggi_exploration:forgotten_ruin`, `/locate structure miggi_exploration:forgotten_ruin` 성공 여부 미확인.
+- `/place template miggi_exploration:forgotten_ruin ~ ~ ~` 명령은 사용자 테스트에서 로딩 성공 메시지가 확인됨. 템플릿 로드 성공만으로 자동 생성까지 증명되지 않음.
+- 이미 생성된 청크에는 새로운 자연 구조물 생성이 소급 적용되지 않으므로 새 월드/미탐험 청크에서 테스트.
+- 마법 숲의 바이옴 규모는 시드에 따라 달라짐. 자동 생성은 마법 숲 내 배치 가능 후보 좌표가 있을 때만 일어남.
+- `/place structure`가 여전히 실패하면 전체 latest.log와 위치·바이옴 정보를 확인하여 원인을 재분석.
+
+
+## v0.8.3 — 마법 숲 전용 나무 / 신규 아이템 / 고대 유적 석재 (GPT)
+
+### 이번에 바뀐 것
+- `ArcaneContent.java`: 독립 블록 5종(마력목 원목·잎, 룬 석재·금 간 룬 석재·발광 룬 석재) + 수집 아이템 `arcane_shard` 등록.
+- 커스텀 16px 블록·아이템 텍스처와 블록상태·모델·아이템 정의, 한영 이름, 블록 채굴 드롭, 도구 태그 포함.
+- 마법 숲 바이옴의 식생 단계에 `arcane_tree` 기능 추가. Minecraft 26.3의 `worldgen/feature` + `placed_feature` 경로 적용. 마력목과 청록색 잎으로 구성된 높이 6~11블록 내외의 자연 생성 나무 시도.
+- 기존 `forgotten_ruin.nbt`를 33×13×33블록 석조 유적 템플릿으로 교체. 신규 룬 석재를 지면·기둥·중앙 제단에 사용. **수동 템플릿 배치는 자연 생성 성공을 보증하지 않음.**
+- 기존 13개 도전과제, RPG, mobs/ 서버 AI, .github, Gradle 설정 변경하지 않음. 새 외부 의존성 없음.
+- 삭제 파일 없음. 기존 유적 템플릿 NBT는 **교체**됨.
+
+### 아직 안 된 것 / 꼭 확인할 사항
+- Java 25 컴파일, Actions 전용 서버 부팅, 인게임 자연 나무 생성·유적 생성·텍스처 렌더링은 **이 환경에서 확인하지 못함**. 초록불은 서버 데이터가 로드됨을 뜻할 뿐 모든 월드 생성이 확인되지는 않음.
+- **26.3 API 확인 필요:** `ArcaneContent`의 `LeavesBlock` 생성자·레지스트리 키·BlockItem 메서드, `minecraft:tree`의 26.3 trunk/foliage 구조, `placed_feature`의 `in_square` modifier가 26.3에서 허용되는지. 실제 빌드 로그가 나오면 수정.
+- Biolith는 마법 숲 바이옴 자연 배치를 위해 클라이언트와 서버에 계속 필요.
+- 구조물의 `/place structure` 실패 원인이 수정되었다고 주장하지 않음. `/place template miggi_exploration:forgotten_ruin ~ ~ ~`부터 시험 권장.
+- 기존 월드의 **생성 완료된 청크**에는 새 나무·유적 자연 생성이 소급 적용되지 않음. 새 월드를 권장.
+- 원목은 v0.8.3에서 단순 큐브 블록이므로 가로눕힘 `axis` 속성이 없음. 잎은 드롭시 마력 파편이 약 12%로 나오도록 초기화. 새 묘목/재식재, 나무 제작대 가공, 전용 상자 보상은 차기 버전 과제.
+
+### 테스트 명령어
+```
+/give @s miggi_exploration:arcane_log 64
+/give @s miggi_exploration:arcane_leaves 64
+/give @s miggi_exploration:rune_stone 64
+/give @s miggi_exploration:glowing_rune_stone 64
+/give @s miggi_exploration:arcane_shard 16
+/locate biome miggi_exploration:arcane_forest
+/place feature miggi_exploration:arcane_tree
+/place template miggi_exploration:forgotten_ruin ~ ~ ~
+/place structure miggi_exploration:forgotten_ruin
+```
+
+### 기술 자료
+- https://www.fabricmc.net/2026/09/15/263.html
+- https://docs.fabricmc.net/develop/blocks/first-block
+- https://docs.fabricmc.net/develop/items/first-item
+- https://minecraft.wiki/w/Configured_feature
+
+
+## v0.8.4 — Java 26.3 LeavesBlock 생성자 수정
+
+### 이번에 바뀐 것
+- `ArcaneContent.java`: `LeavesBlock`의 26.3 생성자가 요구하는 `AmbientLeavesBlockSoundPlayer` 인자를 추가. 기본적으로 `noAmbientSound()`를 사용하여 별도 나뭇잎 환경음을 비활성화.
+- GitHub Actions #15 로그의 `LeavesBlock` 생성자 인수 오류에 대응. 다른 Java 소스, 데이터, 텍스처, 기존 RPG·도전과제·몬스터 시스템은 유지.
+- 삭제 파일 없음. Gradle 설정, `.github` 변경 없음. 새 의존성 없음.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25/Fabric 26.3 빌드 및 전용 서버 부팅은 이번 수정본에 대해 **실행 검증 전**. GitHub Actions에서 다시 확인해야 함.
+- 신규 마력목 자연 생성, 유적 자연 생성, 클라이언트 텍스처 표시·블록 드롭은 인게임 미검증.
+- 공식 타입 참조: `LeavesBlock(AmbientLeavesBlockSoundPlayer, Properties)` 및 `AmbientLeavesBlockSoundPlayer.noAmbientSound()` (Minecraft 26.3).
+
+
+## v0.8.5 — Minecraft 26.3 마력목 서버 부팅 오류 수정
+
+### 이번에 바뀐 것
+- `worldgen/feature/arcane_tree.json`의 누락된 `below_trunk_provider`를 추가했습니다.
+- 트렁크와 잎 블록 상태 공급자를 `minecraft:simple_state_provider`에서 26.3의 `minecraft:simple`로 변경했습니다.
+- 상태 필드를 `Name`/`Properties`에서 26.3의 `id`/`properties`로 수정했습니다.
+- 다른 worldgen JSON에서 해당 구형 표기가 남아 있는지 검색했고, JSON 파싱을 확인했습니다.
+- 기존 탐험·RPG·몹·텍스처·유적 데이터는 유지했습니다.
+- `build.gradle`, `gradle.properties`, `.github`는 수정하지 않았습니다. 삭제한 파일은 없습니다.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25를 이용한 GitHub Actions 컴파일 및 전용 서버 부팅 검사는 **아직 실행하지 못했습니다**.
+- 마법 나무의 자연 생성, 유적의 `/place structure` 및 자연 생성, 실제 텍스처 렌더링은 아직 인게임 검증이 필요합니다.
+- 외부 라이브러리나 모드는 이번 수정에서 추가하지 않았습니다.
+- 자료: https://www.minecraft.net/ko-kr/article/minecraft-java-edition-26-3 및 https://www.fabricmc.net/2026/09/15/263.html
+
+
+## v0.9 — 마법 숲 대형 콘텐츠 업데이트 (GPT 제작)
+### 이번에 바뀐 것
+- 신규 블록 **5종**: arcane_planks, ancient_bark, mossy_rune_stone, rune_pillar, rune_altar. 코드 등록, 블록 모델, 16×16 텍스처, 아이템 모델, 채굴 태그, 자기 자신을 드롭하는 테이블 추가.
+- 신규 수집 아이템 **4종**: goblin_talisman, orc_fang, minotaur_horn, ancient_tablet. 현재는 능력 없는 수집용 재료이며 제작법은 미구현.
+- 고블린/오크/미노타우르스의 기존 전리품을 유지하면서 전용 아이템 추가 드롭 풀을 연결 (고블린 10%, 오크 20%, 미노타우르스 100% 기본 수치).
+- 기본 마력목 외 **고대 마력목**(키 큰 변종)과 **어린 마력목**(작은 변종) 배치 데이터를 독립적으로 추가. 마법 숲 바이옴에 세 변종을 배치. 26.3에서 성공한 arcane_tree 데이터 구조를 재사용.
+- 신규 탐험 구조물 **마력 감시탑** 25×26×25: 4개 층과 계단·발광 룬 장식. 마법 숲 한정 구조물 등록 + NBT 수동 배치 지원.
+- 신규 **미궁 입구 템플릿** 43×17×43: 방 5개, 복도, 중앙 룬 제단·봉인문. 이 단계는 수동 템플릿이며 유적 하부에 연결되는 자동 생성·보스 AI 소환은 아직 적용하지 않음.
+- 기존 기능(탐험 도전과제, 일지, 칭호, RPG, 4종 몬스터 AI, 3D 모델, 바이옴, 원본 유적)은 유지.
+- 기존 build.gradle, gradle.properties, .github 및 fabric.mod.json은 수정하지 않음. **추가 의존성 없음**. Biolith는 기존처럼 바이옴 배치에 필요.
+### 아직 안 된 것 / 확인 필요
+- Minecraft 26.3 Actions 컴파일 및 전용 서버 부팅은 본 환경에서 검증하지 못함. JSON 문법/NBT 내부 좌표/ZIP 구조만 검증.
+- **특히 새 나무 feature JSON과 감시탑 worldgen 등록**은 서버 시작 시 레지스트리 검증을 통과해야 하므로 Actions 로그 확인 필수.
+- 현재 3D 애니메이션은 기존 구현을 유지. GeckoLib와 Lithostitched는 사용자 다운로드 확인되었지만 **모드 Java/Gradle 의존성에 통합하지 않았음**. 두 라이브러리 설치만으로 기능이 생기지는 않음.
+- 감시탑/원본 유적 자동 생성은 게임 월드에서 실측 검증 전. 신규 청크에서 /locate structure로 검사.
+- 미궁 입구 자동 연결 및 미노타우르스 보스방 소환, 상자 전리품, 퍼즐은 아직 미구현.
+- 미궁 템플릿은 평평한 빈 공간에 `/place template miggi_exploration:labyrinth_entrance ~ ~ ~`로 수동 배치하여 외형부터 확인.
+### 새 시험 명령어
+```
+/give @s miggi_exploration:ancient_tablet
+/give @s miggi_exploration:minotaur_horn
+/give @s miggi_exploration:rune_altar
+/place template miggi_exploration:arcane_watchtower ~ ~ ~
+/place template miggi_exploration:labyrinth_entrance ~ ~ ~
+/locate structure miggi_exploration:arcane_watchtower
+```
+
+## v1.0-dev — 독립 미궁 전투·보물 템플릿 (GPT 제작)
+### 이번에 바뀐 것
+- **미궁 시험장 `labyrinth_trial.nbt` 추가**: 45×18×45블록, 룬 석재 바닥·내벽·장식·출입부·보스 전투 구역, 입구 보급 상자 2개.
+- 시험장 NBT에 엔티티 3종 배치 데이터: 미노타우르스 1, 오크 1, 고블린 1. 실제 템플릿 배치 시 엔티티 생성 여부는 **인게임 검증 필요**.
+- **보물방 `labyrinth_vault.nbt` 추가**: 25×12×25블록, 상자 3개와 복도·장식.
+- 전용 상자 전리품 테이블 `labyrinth_supplies`, `labyrinth_treasure` 추가: 빵, 황금 당근, 마력 파편, 다이아몬드, 고대 석판 등. 실제 개봉 시 결과 검증 필요.
+- `tools/build_labyrinth.py` 추가: 위 NBT를 표준 라이브러리만으로 다시 생성할 수 있는 편집용 스크립트. 기존 모델·AI·XP·도전과제·자동 바이옴·구조물 정의 변경 없음.
+- 원본 `build.gradle`, `gradle.properties`, `.github/` 변경 없음. 삭제한 파일 없음. 새 외부 모드·개발 의존성 없음.
+
+### 인게임 테스트 (치트 허용, 백업 월드 권장)
+1. 최신 모드 JAR로 접속. **평화로움 이외 난이도**에서 4종 엔티티가 정상 렌더되는지 먼저 확인.
+2. 비어 있는 넓은 지역에서 `/place template miggi_exploration:labyrinth_trial ~ ~ ~` 실행. 최소 45×18×45블록 공간을 점유하며 기존 건물을 덮을 수 있음.
+3. 시험장 안의 미노타우르스/오크/고블린이 생성되는지 확인. 구조물 로드 성공과 엔티티 스폰 성공은 별개.
+4. 별도의 안전한 위치에서 `/place template miggi_exploration:labyrinth_vault ~ ~ ~` 실행. 상자 3개 개봉 및 전리품 테이블 확인.
+5. 서버 부팅 테스트 통과는 NBT 엔티티·상자 실제 배치까지 입증하지 않음. 실패 로그 또는 인게임 스크린샷을 보내면 조정 가능.
+
+### 아직 안 된 것 / 확인 필요
+- 유적 → 미궁으로 향하는 자동 연결(계단, 입장 상호작용), 자연 생성되는 미궁, 문 봉인/보스 처치 후 해제, 함정 서버 로직, 보스 체력바는 미구현.
+- 고대 유적의 `/place structure` 실패 및 자동 배치 문제는 아직 해결했다고 판단하지 않음. 기존 설정을 수정하지 않았음.
+- 템플릿 NBT의 엔티티 로드 여부, 상자의 LootTable NBT 동작, 템플릿이 블록을 실제로 파내는 동작을 게임에서 확인해야 함.
+- 별도 애니메이션 라이브러리 GeckoLib·월드생성 라이브러리 Lithostitched는 사용자가 설치했지만 **프로젝트 코드와 통합하지 않음**. 추가 의존성 없이 기존 정상 빌드를 유지.

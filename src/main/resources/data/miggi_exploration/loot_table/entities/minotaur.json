@@ -39,6 +39,15 @@
           "weight": 3
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:minotaur_horn"
+        }
+      ]
     }
   ]
 }

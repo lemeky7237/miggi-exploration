@@ -39,6 +39,7 @@ public class MiggiExploration implements ModInitializer {
         .syncWith(RpgData.STREAM_CODEC, AttachmentSyncPredicate.targetOnly()));
 
     @Override public void onInitialize() {
+        ArcaneContent.initialize();
         ModMobs.initialize();
         MonsterSpawns.register();
 

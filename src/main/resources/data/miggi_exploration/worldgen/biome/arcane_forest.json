@@ -52,6 +52,9 @@
     ],
     [],
     [
+      "miggi_exploration:ancient_arcane_tree",
+      "miggi_exploration:arcane_tree",
+      "miggi_exploration:young_arcane_tree",
       "minecraft:glow_lichen",
       "minecraft:flower_forest_flowers",
       "minecraft:patch_grass_forest",

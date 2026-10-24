@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "miggi_exploration:block/mossy_rune_stone"
+  }
+}
