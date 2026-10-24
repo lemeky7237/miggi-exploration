@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 /** Dedicated worldgen blocks and collectible item for the Arcane Forest. */
@@ -25,7 +26,8 @@ public final class ArcaneContent {
     private static Block leaves(String name) {
         ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, MiggiExploration.id(name));
         Block result = Registry.register(BuiltInRegistries.BLOCK, blockKey,
-            new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).setId(blockKey)));
+            new LeavesBlock(AmbientLeavesBlockSoundPlayer.noAmbientSound(),
+                BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).setId(blockKey)));
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, MiggiExploration.id(name));
         Registry.register(BuiltInRegistries.ITEM, itemKey,
             new BlockItem(result, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));

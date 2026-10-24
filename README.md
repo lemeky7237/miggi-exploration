@@ -241,3 +241,16 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - https://docs.fabricmc.net/develop/blocks/first-block
 - https://docs.fabricmc.net/develop/items/first-item
 - https://minecraft.wiki/w/Configured_feature
+
+
+## v0.8.4 — Java 26.3 LeavesBlock 생성자 수정
+
+### 이번에 바뀐 것
+- `ArcaneContent.java`: `LeavesBlock`의 26.3 생성자가 요구하는 `AmbientLeavesBlockSoundPlayer` 인자를 추가. 기본적으로 `noAmbientSound()`를 사용하여 별도 나뭇잎 환경음을 비활성화.
+- GitHub Actions #15 로그의 `LeavesBlock` 생성자 인수 오류에 대응. 다른 Java 소스, 데이터, 텍스처, 기존 RPG·도전과제·몬스터 시스템은 유지.
+- 삭제 파일 없음. Gradle 설정, `.github` 변경 없음. 새 의존성 없음.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25/Fabric 26.3 빌드 및 전용 서버 부팅은 이번 수정본에 대해 **실행 검증 전**. GitHub Actions에서 다시 확인해야 함.
+- 신규 마력목 자연 생성, 유적 자연 생성, 클라이언트 텍스처 표시·블록 드롭은 인게임 미검증.
+- 공식 타입 참조: `LeavesBlock(AmbientLeavesBlockSoundPlayer, Properties)` 및 `AmbientLeavesBlockSoundPlayer.noAmbientSound()` (Minecraft 26.3).
