@@ -60,19 +60,25 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 ctx.waitTicks(2);
             });
 
-            mobShots(ctx, sp, server, "goblin", ModMobs.GOBLIN, 4.0, 1.1, 12,
+            mobShots(ctx, sp, server, "goblin", ModMobs.GOBLIN, 3.2, 1.0, 16,
                 new int[]{FantasyMonster.GOBLIN_SWING}, new int[][]{{2, 5}});
-            mobShots(ctx, sp, server, "orc", ModMobs.ORC, 6.0, 1.8, 8,
+            mobShots(ctx, sp, server, "orc", ModMobs.ORC, 4.6, 1.6, 6,
                 new int[]{FantasyMonster.ORC_CHOP, FantasyMonster.ORC_SLASH}, new int[][]{{5, 11}, {4, 8}});
-            mobShots(ctx, sp, server, "wild_boar", ModMobs.WILD_BOAR, 6.0, 2.0, 12,
+            mobShots(ctx, sp, server, "wild_boar", ModMobs.WILD_BOAR, 4.6, 1.8, 16,
                 new int[]{FantasyMonster.BOAR_RAM}, new int[][]{{3, 6}});
-            mobShots(ctx, sp, server, "minotaur", ModMobs.MINOTAUR, 10.0, 3.0, -4,
+            mobShots(ctx, sp, server, "minotaur", ModMobs.MINOTAUR, 7.5, 2.6, -8,
                 new int[]{FantasyMonster.MINO_SWIPE, FantasyMonster.MINO_CHARGE_WINDUP, FantasyMonster.MINO_CHARGE,
                           FantasyMonster.MINO_SMASH_WINDUP, FantasyMonster.MINO_SMASH, FantasyMonster.MINO_STUN},
                 new int[][]{{4, 9}, {10}, {8}, {14}, {3}, {12}});
 
             combat(ctx, sp, server);
             structures(ctx, sp, server);
+        } catch (Throwable t) {
+            log("FAIL flat world: " + t);
+        }
+        section("natural world: arcane forest + structures", () -> naturalWorld(ctx));
+        try {
+            log("done");
         } catch (Throwable t) {
             log("FATAL " + t);
             throw t;
@@ -112,7 +118,16 @@ public class MiggiClientGameTest implements FabricClientGameTest {
 
     private static <T extends FantasyMonster> List<T> find(MinecraftServer s, EntityType<T> type) {
         ServerLevel level = s.overworld();
-        return new ArrayList<>(level.getEntities(type, e -> true));
+        return new ArrayList<>(level.getEntities(type, e -> e.isAlive()));
+    }
+
+    /** Removes every non-player entity without death animations, particles or drops. */
+    private void clear(TestServerContext server) {
+        server.runOnServer(s -> {
+            List<net.minecraft.world.entity.Entity> all = new ArrayList<>();
+            s.overworld().getAllEntities().forEach(all::add);
+            for (var e : all) if (!(e instanceof ServerPlayer)) e.discard();
+        });
     }
 
     // ------------------------------------------------------------------ monsters
@@ -121,7 +136,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                           EntityType<? extends FantasyMonster> type, double dist, double gap, int pitch,
                           int[] anims, int[][] frames) {
         section("mob " + name, () -> {
-            cmd(server, "kill @e[type=!player]");
+            clear(server);
             cmd(server, "tp @p 0.5 -60 0.5 0 " + pitch);
             String id = "miggi_exploration:" + name;
             double z = 0.5 + dist;
@@ -152,9 +167,10 @@ public class MiggiClientGameTest implements FabricClientGameTest {
             }
 
             // walking: one AI-enabled copy walks across the view
-            cmd(server, "kill @e[type=!player]");
+            clear(server);
             cmd(server, String.format("summon %s %.2f -60 %.2f {PersistenceRequired:1b,Rotation:[90f,0f]}", id, 0.5 + 4, z));
             sp.getConnection().waitForClientboundEntityUpdates(type);
+            ctx.waitTicks(10);   // let it land before asking for a path
             double startX = server.computeOnServer(s -> {
                 var list = find(s, type);
                 if (list.isEmpty()) return Double.NaN;
@@ -170,7 +186,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 return list.isEmpty() ? Double.NaN : list.get(0).getX();
             });
             log(name + " walk moved " + String.format("%.2f", startX - endX) + " blocks in 14 ticks");
-            cmd(server, "kill @e[type=!player]");
+            clear(server);
         });
     }
 
@@ -178,7 +194,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
 
     private void combat(ClientGameTestContext ctx, TestSingleplayerContext sp, TestServerContext server) {
         section("combat + rpg xp", () -> {
-            cmd(server, "kill @e[type=!player]");
+            clear(server);
             cmd(server, "tp @p 0.5 -60 0.5 0 10");
             cmd(server, "gamemode survival @p");
             cmd(server, "effect give @p minecraft:resistance 600 3 true");
@@ -230,7 +246,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                         + " gained=" + (total(after) - total(before));
                 });
                 log("xp " + n + ": " + xp);
-                cmd(server, "kill @e[type=!player]");
+                clear(server);
             }
             cmd(server, "gamemode creative @p");
         });
@@ -242,6 +258,48 @@ public class MiggiClientGameTest implements FabricClientGameTest {
         return t;
     }
 
+    // ------------------------------------------------------------------ natural world
+
+    private void naturalWorld(ClientGameTestContext ctx) {
+        try (TestSingleplayerContext sp = ctx.worldBuilder()
+                .setUseConsistentSettings(false)
+                .adjustSettings(c -> {
+                    c.setSeed("20261024");
+                    c.setGameMode(WorldCreationUiState.SelectedGameMode.CREATIVE);
+                })
+                .create()) {
+            TestServerContext server = sp.getServer();
+            sp.getConnection().waitForChunksRender();
+            cmd(server, "gamerule send_command_feedback false");
+            cmd(server, "time set noon");
+            cmd(server, "gamerule advance_time false");
+            int found = cmd(server, "locate biome miggi_exploration:arcane_forest");
+            log("biolith loaded=" + FabricLoader.getInstance().isModLoaded("biolith"));
+            String where = server.computeOnServer(s -> {
+                var level = s.overworld();
+                var pos = level.findClosestBiome3d(h -> h.unwrapKey().map(k -> k.toString().contains("miggi_exploration:arcane_forest")).orElse(false),
+                    s.getPlayerList().getPlayers().get(0).blockPosition(), 6400, 32, 64);
+                return pos == null ? "none" : pos.getFirst().getX() + " " + pos.getFirst().getZ();
+            });
+            log("arcane forest at: " + where);
+            if (!where.equals("none")) {
+                String[] xz = where.split(" ");
+                cmd(server, "tp @p " + xz[0] + " 140 " + xz[1] + " 0 50");
+                sp.getConnection().waitForChunksRender();
+                ctx.waitTicks(40);
+                sp.getConnection().waitForChunksRender();
+                ctx.takeScreenshot("world_arcane_forest_air");
+                cmd(server, "spreadplayers " + xz[0] + " " + xz[1] + " 0 4 false @p");
+                sp.getConnection().waitForChunksRender();
+                ctx.waitTicks(30);
+                ctx.takeScreenshot("world_arcane_forest_ground");
+            }
+            for (String st : new String[]{"forgotten_ruin", "arcane_grove", "arcane_watchtower"}) {
+                cmd(server, "locate structure miggi_exploration:" + st);
+            }
+        }
+    }
+
     // ------------------------------------------------------------------ structures
 
     private void structures(ClientGameTestContext ctx, TestSingleplayerContext sp, TestServerContext server) {
@@ -250,7 +308,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
         for (String t : templates) {
             int bx = x;
             section("template " + t, () -> {
-                cmd(server, "kill @e[type=!player]");
+                clear(server);
                 cmd(server, "tp @p " + (bx + 22) + " -30 " + (-26) + " 0 40");
                 cmd(server, "forceload add " + (bx - 16) + " -16 " + (bx + 64) + " 64");
                 sp.getConnection().waitForChunksRender();

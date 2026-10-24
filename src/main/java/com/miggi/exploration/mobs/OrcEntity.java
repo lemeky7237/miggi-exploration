@@ -29,6 +29,7 @@ public class OrcEntity extends FantasyMonster {
             .add(Attributes.FOLLOW_RANGE, 28.0);
     }
 
+    @Override protected double attackReach() { return 1.7; }
     @Override public int rpgXp() { return 40; }
     @Override protected int chooseAttackAnim() { return getRandom().nextBoolean() ? ORC_CHOP : ORC_SLASH; }
     @Override protected int windupTicks(int anim) { return anim == ORC_CHOP ? 10 : 7; }

@@ -85,6 +85,9 @@ public abstract class FantasyMonster extends Monster {
     /** Ticks between the start of an attack animation and the moment the blow lands. */
     protected abstract int windupTicks(int anim);
 
+    /** Weapon reach beyond the two bodies touching, in blocks. Big mobs with long weapons reach further. */
+    protected double attackReach() { return 0.9; }
+
     /** Speed multiplier while chasing a target. */
     protected double chaseSpeed() { return 1.0; }
 
@@ -136,15 +139,25 @@ public abstract class FantasyMonster extends Monster {
             pendingHitTick = -1;
             pendingTarget = null;
             // a little extra reach so a target that stepped back during the wind-up can still be hit
-            if (target != null && target.isAlive() && distanceToSqr(target) <= reachSqr(target) * 1.35) {
+            if (target != null && target.isAlive() && inReach(target, 0.6)) {
                 landHit(level, target, pendingAnim);
             }
         }
     }
 
-    private double reachSqr(LivingEntity target) {
-        double w = getBbWidth() * 0.5 + target.getBbWidth() * 0.5 + 1.2;
-        return w * w;
+    /**
+     * Melee range used by MeleeAttackGoal. Vanilla derives it from the hitbox only, which left the big orc
+     * and minotaur standing just out of reach of the player (they reached ~1.8 blocks and stopped swinging).
+     */
+    @Override public boolean isWithinMeleeAttackRange(LivingEntity target) {
+        return inReach(target, 0);
+    }
+
+    private boolean inReach(LivingEntity target, double slack) {
+        double reach = getBbWidth() * 0.5 + target.getBbWidth() * 0.5 + attackReach() + slack;
+        double dx = target.getX() - getX(), dz = target.getZ() - getZ();
+        double dy = target.getY() - getY();
+        return dx * dx + dz * dz <= reach * reach && dy > -target.getBbHeight() - 0.5 && dy < getBbHeight() + 0.5;
     }
 
     /** Starts an animation on every client tracking this entity (server side). */

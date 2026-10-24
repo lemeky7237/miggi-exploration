@@ -41,6 +41,7 @@ public class MinotaurEntity extends FantasyMonster {
             .add(Attributes.STEP_HEIGHT, 1.0);
     }
 
+    @Override protected double attackReach() { return 2.6; }
     @Override public int rpgXp() { return 500; }
     @Override protected int chooseAttackAnim() { return MINO_SWIPE; }
     @Override protected int windupTicks(int anim) { return 8; }
