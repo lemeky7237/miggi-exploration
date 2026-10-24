@@ -18,7 +18,7 @@ public final class DiscoveryBanner {
     private DiscoveryBanner() {}
 
     private static final Identifier TEXTURE = MiggiExploration.id("textures/gui/discovery_scroll.png");
-    private static final int TEX_W = 512, TEX_H = 128, SRC_W = 320, SRC_H = 80;
+    private static final int TEX_W = 1024, TEX_H = 256, SRC_W = 640, SRC_H = 160;
     private static final int W = 240, H = 60;
     private static final long SHOW_MS = 3800, FADE_IN = 350, FADE_OUT = 600;
 

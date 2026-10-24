@@ -17,11 +17,12 @@ import net.minecraft.sounds.SoundEvents;
 
 import java.util.List;
 
-/** 탐험 일지: left page = discovered places, right page = challenges and current title. */
+/** 탐험 일지: left page = discovered places (J key), right page = challenges and current title. */
 public class JournalScreen extends Screen {
     private static final Identifier BOOK = MiggiExploration.id("textures/gui/journal.png");
     private static final Identifier ARROWS = MiggiExploration.id("textures/gui/arrows.png");
-    private static final int BOOK_W = 384, BOOK_H = 240, TEX_W = 512, TEX_H = 256;
+    // texture is drawn at 2x (768x480 inside a 1024x512 file) and shown at 384x240 GUI units
+    private static final int BOOK_W = 384, BOOK_H = 240, SRC_W = 768, SRC_H = 480, TEX_W = 1024, TEX_H = 512;
 
     private static final int INK = 0xFF5C3A24, FAINT = 0xFF9C8064, GREEN = 0xFF34703A, GOLD = 0xFFB07A2E;
     private static final int LEFT_CX = 107, RIGHT_CX = 277;
@@ -70,7 +71,7 @@ public class JournalScreen extends Screen {
         ExploreData data = data();
         int total = totalPlaces(data);
 
-        g.blit(RenderPipelines.GUI_TEXTURED, BOOK, left, top, 0f, 0f, BOOK_W, BOOK_H, TEX_W, TEX_H);
+        g.blit(RenderPipelines.GUI_TEXTURED, BOOK, left, top, 0f, 0f, BOOK_W, BOOK_H, SRC_W, SRC_H, TEX_W, TEX_H);
 
         // ---- left page: places ----
         int lx = left + LEFT_CX;
@@ -139,15 +140,15 @@ public class JournalScreen extends Screen {
     }
 
     private void arrow(GuiGraphicsExtractor g, int x, int y, boolean back, boolean hover) {
-        float u = hover ? 16f : 0f;
+        float u = hover ? 32f : 0f;  // arrows.png: two 32x32 frames, shown at 16x16
         if (back) {
             g.pose().pushMatrix();
             g.pose().translate(x + 16, y);
             g.pose().scale(-1f, 1f);
-            g.blit(RenderPipelines.GUI_TEXTURED, ARROWS, 0, 0, u, 0f, 16, 16, 32, 16);
+            g.blit(RenderPipelines.GUI_TEXTURED, ARROWS, 0, 0, u, 0f, 16, 16, 32, 32, 64, 32);
             g.pose().popMatrix();
         } else {
-            g.blit(RenderPipelines.GUI_TEXTURED, ARROWS, x, y, u, 0f, 16, 16, 32, 16);
+            g.blit(RenderPipelines.GUI_TEXTURED, ARROWS, x, y, u, 0f, 16, 16, 32, 32, 64, 32);
         }
     }
 

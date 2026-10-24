@@ -14,21 +14,18 @@ import java.util.List;
  *
  * @param places     biome ids discovered, e.g. "minecraft:river"
  * @param challenges challenge ids completed
- * @param treasures  treasure item ids ever held
  */
-public record ExploreData(List<String> places, List<String> challenges, List<String> treasures) {
-    public static final ExploreData EMPTY = new ExploreData(List.of(), List.of(), List.of());
+public record ExploreData(List<String> places, List<String> challenges) {
+    public static final ExploreData EMPTY = new ExploreData(List.of(), List.of());
 
     public static final Codec<ExploreData> CODEC = RecordCodecBuilder.create(i -> i.group(
         Codec.STRING.listOf().fieldOf("places").forGetter(ExploreData::places),
-        Codec.STRING.listOf().fieldOf("challenges").forGetter(ExploreData::challenges),
-        Codec.STRING.listOf().fieldOf("treasures").forGetter(ExploreData::treasures)
+        Codec.STRING.listOf().fieldOf("challenges").forGetter(ExploreData::challenges)
     ).apply(i, ExploreData::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ExploreData> STREAM_CODEC = StreamCodec.composite(
         ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), ExploreData::places,
         ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), ExploreData::challenges,
-        ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), ExploreData::treasures,
         ExploreData::new);
 
     private static List<String> plus(List<String> list, String value) {
@@ -37,9 +34,8 @@ public record ExploreData(List<String> places, List<String> challenges, List<Str
         return List.copyOf(copy);
     }
 
-    public ExploreData withPlace(String id) { return new ExploreData(plus(places, id), challenges, treasures); }
-    public ExploreData withChallenge(String id) { return new ExploreData(places, plus(challenges, id), treasures); }
-    public ExploreData withTreasure(String id) { return new ExploreData(places, challenges, plus(treasures, id)); }
+    public ExploreData withPlace(String id) { return new ExploreData(plus(places, id), challenges); }
+    public ExploreData withChallenge(String id) { return new ExploreData(places, plus(challenges, id)); }
 
     public long placesMatching(String part) {
         return places.stream().filter(p -> p.contains(part)).count();

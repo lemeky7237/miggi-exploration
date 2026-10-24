@@ -40,8 +40,6 @@ public final class Challenges {
         new Challenge("pathfinder", 25, Challenges::places),
         new Challenge("nether", 3, d -> countIn(d, NETHER)),
         new Challenge("end", 1, d -> countIn(d, END)),
-        new Challenge("treasure_first", 1, d -> d.treasures().size()),
-        new Challenge("treasure_all", MiggiExploration.TREASURES.size(), d -> d.treasures().size()),
         new Challenge("world_walker", 50, Challenges::places)
     );
 

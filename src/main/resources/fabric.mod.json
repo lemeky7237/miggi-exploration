@@ -3,7 +3,7 @@
   "id": "miggi_exploration",
   "version": "${version}",
   "name": "미끼탐험모드 (Miggi Exploration)",
-  "description": "Exploration journal, new-place scroll banners, exploration challenges with titles, and seven treasures hidden in structure chests.",
+  "description": "Exploration journal (J), new-place scroll banners and exploration challenges with titles.",
   "environment": "*",
   "entrypoints": {
     "main": [
