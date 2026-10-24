@@ -338,3 +338,11 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 ## 26.3 구조물(NBT) 형식 주의
 - 블록 팔레트 키가 바뀜: `Name` → `id`, `Properties` → `properties`. 옛 키를 쓰면 `/place`가 성공으로 나와도 **블록이 하나도 안 놓임**(엔티티만 생김).
 - `blocks[].pos`는 정수 리스트(`[x, y, z]`)여야 함. IntArray로 쓰면 안 됨.
+
+## v1.0.1 — Claude 검증·수정 (실제 게임 자동 테스트로 확인)
+- **자동 인게임 테스트** (`client-test` 작업): 깃허브에서 실제 게임을 띄워 몬스터·애니메이션·구조물·숲 스크린샷과 결과를 `test-results` 브랜치에 올림. 테스트 코드: `client/test/MiggiClientGameTest.java`
+- 몬스터 4종 모델 새로 제작 (`tools/models/specs.py` → `MobLayers.java` + 텍스처 자동 생성), 공격 키프레임 애니메이션 (`FantasyModel.java`)
+- 오크·미노타우르스 무기 사거리 (`attackReach`): 덩치 때문에 플레이어 앞에서 멈추고 못 때리던 문제 수정
+- **구조물이 블록 0개로 생성되던 문제 수정**: NBT 팔레트를 26.3 형식(`id`/`properties`)으로 변환. `arcane_grove` 구조물 설정 수정
+- 마법 숲: 바이옴 기능 순서를 바닐라와 맞춤(순서 충돌 경고 제거), `arcane_log`를 진짜 원목(회전·잎 유지)으로, 잎 투명 처리, 블록·아이템 텍스처 교체
+- 새 월드 첫 발견 두루마리가 안 뜨던 문제, RPG HUD가 채팅과 겹치던 문제 수정
