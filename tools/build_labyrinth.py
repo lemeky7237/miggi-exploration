@@ -59,8 +59,8 @@ class Structure:
             key=(name,props)
             if key not in lookup:
                 lookup[key]=len(palette)
-                p={'Name':S(name)}
-                if props:p['Properties']=C({k:S(v) for k,v in props})
+                p={'id':S(name)}  # 26.3 palette key (was 'Name')
+                if props:p['properties']=C({k:S(v) for k,v in props})
                 palette.append(C(p))
             b={'pos':IA([x,y,z]),'state':I(lookup[key])}
             if nbt:b['nbt']=C(nbt)
