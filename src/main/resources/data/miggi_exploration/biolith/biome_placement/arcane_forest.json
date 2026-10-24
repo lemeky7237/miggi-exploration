@@ -1,0 +1,16 @@
+{
+  "replacements": [
+    {
+      "dimension": "minecraft:overworld",
+      "target": "minecraft:forest",
+      "biome": "miggi_exploration:arcane_forest",
+      "proportion": 0.11
+    },
+    {
+      "dimension": "minecraft:overworld",
+      "target": "minecraft:birch_forest",
+      "biome": "miggi_exploration:arcane_forest",
+      "proportion": 0.08
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "miggi_exploration:arcane_grove",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 714077,
+    "spacing": 22,
+    "separation": 8,
+    "spread_type": "linear"
+  }
+}

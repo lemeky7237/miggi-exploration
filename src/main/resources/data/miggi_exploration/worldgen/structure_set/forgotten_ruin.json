@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "miggi_exploration:forgotten_ruin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 714078,
+    "spacing": 55,
+    "separation": 20,
+    "spread_type": "linear"
+  }
+}

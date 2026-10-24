@@ -1,0 +1,64 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.65,
+  "downfall": 0.85,
+  "effects": {
+    "water_color": "#4776d9",
+    "grass_color": "#68b8a0",
+    "foliage_color": "#64aac0"
+  },
+  "attributes": {
+    "minecraft:visual/sky_color": "#85a9fc",
+    "minecraft:visual/fog_color": "#a2b6f3",
+    "minecraft:visual/water_fog_color": "#324e92"
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "features": [
+    [],
+    [],
+    [
+      "minecraft:lake_lava_underground",
+      "minecraft:lake_lava_surface"
+    ],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_tuff",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_redstone",
+      "minecraft:ore_diamond",
+      "minecraft:ore_lapis"
+    ],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [],
+    [
+      "minecraft:glow_lichen",
+      "minecraft:trees_birch_and_oak",
+      "minecraft:flower_forest_flowers",
+      "minecraft:patch_grass_forest",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_pumpkin"
+    ],
+    []
+  ]
+}

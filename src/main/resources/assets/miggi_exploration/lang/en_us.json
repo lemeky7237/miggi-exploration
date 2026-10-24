@@ -52,5 +52,6 @@
   "entity.miggi_exploration.goblin": "Goblin",
   "entity.miggi_exploration.orc": "Orc",
   "entity.miggi_exploration.wild_boar": "Wild Boar",
-  "entity.miggi_exploration.minotaur": "Minotaur"
+  "entity.miggi_exploration.minotaur": "Minotaur",
+  "biome.miggi_exploration.arcane_forest": "Arcane Forest"
 }

@@ -125,3 +125,52 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 2. 난이도를 평화로움 이외로 설정한 후 숲·어두운 숲·타이가에서 자연 생성 확인. 조명과 주변 적대적 몬스터 수에 영향받음.
 3. 미노타우르스가 오버월드에서 자연 생성되지 않는지 확인.
 4. 클라이언트에 4종 모델·텍스처가 정상 출력되는지 확인 (`Actions` 전용 서버 부팅만으로 판정 불가).
+
+
+## v0.7 — 마법 숲 구역과 잊힌 유적 (GPT 제작)
+### 이번에 바뀐 것
+- **새 Java 클래스와 의존성 없이** 26.3 데이터팩 기반 Jigsaw 구조물 자동 생성 2종을 추가했음. 기존 탐험·RPG·몬스터·빌드 코드 유지.
+- `arcane_grove`: 약 35×18×35 블록의 **작은 마법 숲 구역**. 발광 나무 6그루, 이끼 바닥, 자수정 중심 제단, 랜턴. 이는 **독립 바이옴이 아니라 오버월드 숲에 드물게 생성되는 구조물**임.
+- `forgotten_ruin`: 약 25×10×25 블록의 잊힌 제단 유적. 무너진 석재 기둥과 중앙 제단. **미노타우르스는 아직 배치하지 않음**(미궁 전용 보스 유지).
+- NBT 템플릿의 `DataVersion`은 Minecraft Java 26.3의 **5023** 사용. `worldgen/structure`, `structure_set`, `template_pool` 등록.
+- 구조물 생성 위치는 숲·타이가 등 명시한 바이옴으로 한정. `spacing` 22청크(마법 숲 구역), 55청크(유적), `separation` 8/20청크. 이는 고정 거리 보장값이 아닌 random_spread 후보 그리드임.
+- 파일 삭제·기존 파일 수정 없음(README 제외). `build.gradle`, `gradle.properties`, `.github` 수정 없음. 외부 의존성 없음.
+
+### 시험용 명령어 (치트 허용, 월드에서 실행)
+```
+/place structure miggi_exploration:arcane_grove
+/place structure miggi_exploration:forgotten_ruin
+/locate structure miggi_exploration:arcane_grove
+/locate structure miggi_exploration:forgotten_ruin
+```
+- `/place structure`가 정상 동작하는지와 `/locate structure`가 실제 새 청크 생성 결과를 탐색하는지는 **별개**로 검증. 이미 생성된 청크에는 자연 생성 구조물이 새로 생기지 않음.
+- `/place template miggi_exploration:arcane_grove` / `/place template miggi_exploration:forgotten_ruin`으로 NBT 구조물만 직접 배치하는 방법도 있음. 템플릿 배치는 자동생성 JSON 문제의 구분 테스트에 유용.
+
+### 아직 안 된 것 / 확인 필요
+- **GitHub Actions 컴파일 및 전용 서버 부팅, 인게임 구조물 로딩/자연 생성은 이 환경에서 실행하지 못함.** JSON과 NBT 포맷은 자체 검사함.
+- Minecraft 26.3의 Jigsaw 구조물/프로젝션·template pool 스키마에 변경이 있는 경우 서버 월드 로딩 단계에서 데이터 파싱 오류 가능. 특히 `size: 0`, `start_height`, heightmap projection은 dev 실측 후 조정 필요.
+- **마법 숲은 독립 biome ID가 아님.** 추후 고유 바이옴, 몬스터 스폰 분포, 환경색, 배경음악 등은 별도 구현.
+- 유적은 블록 기반 탐험 장소의 초기형이며 상자/전리품/퍼즐/몹 보초/퀘스트/미궁 연결은 미완료.
+- 지형과의 경계(땅속 묻힘/허공/기존 나무 충돌)는 실제 지형에서 시각 검증 필요. 블록 범위가 청크를 넘어가며 자연 지형을 덮을 수 있음.
+
+### 참고한 26.3 기술 자료
+- Minecraft 26.3 버전 데이터 및 worldgen 변경: https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3
+- Jigsaw 구조물 JSON 구조: https://minecraft.wiki/w/Jigsaw_structure
+- 구조물 템플릿 풀 JSON: https://minecraft.wiki/w/Template_pool
+- 구조물 정의와 /locate 테스트: https://minecraft.wiki/w/Tutorial:Custom_structures
+
+
+## v0.8 — 독립 마법 숲 바이옴 + 숲 내부 유적 (GPT 제작)
+### 이번에 바뀐 것
+- 오버월드에 `miggi_exploration:arcane_forest` 독립 바이옴을 데이터로 정의. 풀/물/하늘의 색상과 숲·꽃·동굴·광물 배치 초안을 설정.
+- Biolith의 데이터 기반 `replacements`로 기존 숲(11%)·자작나무 숲(8%)의 **일부 패치**를 마법 숲으로 대체하도록 설정. 이는 전체 월드가 아닌 해당 바이옴 구역 기준 비율이며 블록 기준의 정확한 생성 확률을 의미하지 않음. 마법 숲의 실제 규모는 월드 시드·Biolith 설정에 좌우됨.
+- `arcane_grove` (기존 35×35 마법 제단 숲)와 `forgotten_ruin` 구조물은 마법 숲 바이옴에서만 생성되도록 제한. 기존 NBT·구조물 세트 유지.
+- ko_kr/en_us에 마법 숲 바이옴 이름 추가. 서버 AI, 3D 렌더러, 도전과제, RPG 데이터, 빌드 설정, GitHub Actions 변경 없음. 삭제 파일 없음.
+- **런타임 추가 의존성:** Biolith Fabric v3.8.0-beta.1 (Minecraft 26.3)를 게임 클라이언트와 전용 서버 양쪽에 설치해야 함. `fabric.mod.json`, `build.gradle`, `gradle.properties`는 변경하지 않음. Biolith 미설치 시 배치 파일은 적용되지 않아 자연 생성하지 않음. Biolith 데이터 API이므로 모드 Java 코드에 직접 의존하지 않음. 참고: https://www.curseforge.com/minecraft/mc-mods/biolith/files/all , https://github-wiki-see.page/m/TerraformersMC/Biolith/wiki/Upgrading-v3.0-to-v3.1
+
+### 아직 안 된 것 / 확인 필요
+- **이 ZIP은 로컬 Java 25 빌드, 서버 부팅 및 실제 클라이언트 월드 생성 미검증.** GitHub Actions 검사와 실제 인게임 테스트 필요. 현재 CI에 Biolith가 설치되지 않아도 기존 서버 부팅은 가능하지만, 바이옴 생성 자체는 검증하지 못함.
+- **주의: 현재 26.3 바이옴 `features`의 일부 바닐라 placed feature ID와 `attributes` 효과 키는 로컬 서버 바이옴 레지스트리로 검증되지 않음.** 월드 로드/`/locate biome` 오류 로그가 나오면 수정할 것. 마법 숲의 특수 나무·발광 생물은 현재 기존 나무·꽃·발광 이끼 및 기존 NBT 구조물 사용; 독자적 마법 나무 블록, 파티클, 음악, 안개 셰이더는 아직 없음.
+- 고대 유적 생성 보장 아님: biome 조건과 structure_set spacing 모두 충족해야 생성. 새로운 월드 또는 신규 청크에서 테스트해야 함.
+- `/locate biome miggi_exploration:arcane_forest` 및 `/locate structure miggi_exploration:forgotten_ruin`으로 시험. Biolith v3.8 배치 데이터 실제 적용 여부 확인 필요.
+- 게임에 Biolith 의존성을 추가하는 것 자체가 기존 CI 설계에 적합하지 않다면, 자동 바이옴 배치를 비활성화하고 바이옴 정의/구조물만 유지한 다음 다른 호환 방식으로 변경해야 함.
