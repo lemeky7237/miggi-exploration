@@ -13,7 +13,7 @@ public final class RpgHud {
     private RpgHud() {}
     public static void extract(GuiGraphicsExtractor graphics, DeltaTracker delta) {
         var player = Minecraft.getInstance().player;
-        if (player == null || Minecraft.getInstance().options.hideGui) return;
+        if (player == null) return; // HUD elements are already skipped while F1 hides the GUI
         RpgData data = player.getAttachedOrElse(MiggiExploration.RPG_DATA, RpgData.INITIAL);
         var font = Minecraft.getInstance().font;
         String xp = data.level() >= RpgSystem.LEVEL_CAP ? "MAX" : data.xp() + "/" + RpgSystem.xpToNext(data.level());
