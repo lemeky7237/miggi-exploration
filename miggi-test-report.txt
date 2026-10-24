@@ -1,0 +1,180 @@
+cmd ok  (0) /gamerule send_command_feedback false
+cmd ERR /gamerule sendCommandFeedback false -> Incorrect argument for command at position 9: gamerule <--[HERE]
+cmd ok  (0) /gamerule log_admin_commands false
+cmd ERR /gamerule logAdminCommands false -> Incorrect argument for command at position 9: gamerule <--[HERE]
+cmd ok  (6000) /time set noon
+cmd ok  (-1) /weather clear
+cmd ERR /difficulty normal -> The difficulty did not change; it is already set to Normal
+OK   exploration ui
+cmd ok  (1) /tp @p 0.5 -60 0.5 0 16
+cmd ok  (1) /summon miggi_exploration:goblin -0.50 -60 3.70 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+cmd ok  (1) /summon miggi_exploration:goblin 1.50 -60 3.70 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+goblin hitbox width=0.6000000238418579 height=1.350000023841858
+cmd ok  (1) /summon miggi_exploration:goblin 4.50 -60 3.70 {PersistenceRequired:1b,Rotation:[90f,0f]}
+goblin path found=true onGround=true y=-60.0
+goblin walk moved 2.92 blocks in 14 ticks
+OK   mob goblin
+cmd ok  (1) /tp @p 0.5 -60 0.5 0 6
+cmd ok  (1) /summon miggi_exploration:orc -1.10 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+cmd ok  (1) /summon miggi_exploration:orc 2.10 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+orc hitbox width=1.0 height=2.3499999046325684
+cmd ok  (1) /summon miggi_exploration:orc 4.50 -60 5.10 {PersistenceRequired:1b,Rotation:[90f,0f]}
+orc path found=true onGround=true y=-60.0
+orc walk moved 0.52 blocks in 14 ticks
+OK   mob orc
+cmd ok  (1) /tp @p 0.5 -60 0.5 0 16
+cmd ok  (1) /summon miggi_exploration:wild_boar -1.30 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+cmd ok  (1) /summon miggi_exploration:wild_boar 2.30 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+wild_boar hitbox width=1.2000000476837158 height=1.5
+cmd ok  (1) /summon miggi_exploration:wild_boar 4.50 -60 5.10 {PersistenceRequired:1b,Rotation:[90f,0f]}
+wild_boar path found=true onGround=true y=-60.0
+wild_boar walk moved 2.30 blocks in 14 ticks
+OK   mob wild_boar
+cmd ok  (1) /tp @p 0.5 -60 0.5 0 -8
+cmd ok  (1) /summon miggi_exploration:minotaur -2.10 -60 8.00 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+cmd ok  (1) /summon miggi_exploration:minotaur 3.10 -60 8.00 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+minotaur hitbox width=1.7999999523162842 height=3.200000047683716
+cmd ok  (1) /summon miggi_exploration:minotaur 4.50 -60 8.00 {PersistenceRequired:1b,Rotation:[90f,0f]}
+minotaur path found=true onGround=true y=-60.0
+minotaur walk moved 2.17 blocks in 14 ticks
+OK   mob minotaur
+cmd ok  (1) /tp @p 0.5 -60 0.5 0 10
+cmd ok  (1) /gamemode survival @p
+cmd ok  (1) /effect give @p minecraft:resistance 600 3 true
+cmd ok  (1) /effect give @p minecraft:regeneration 600 2 true
+cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+cmd ok  (1) /summon miggi_exploration:goblin 0.5 -60 4.0 {PersistenceRequired:1b}
+  goblin t+40: dist=0.76 hp(player)=20.0 navDone=true target=true aggressive=true
+  goblin t+80: dist=1.09 hp(player)=19.4 navDone=true target=true aggressive=true
+  goblin t+120: dist=1.15 hp(player)=19.4 navDone=false target=true aggressive=true
+  goblin t+160: dist=1.64 hp(player)=20.0 navDone=true target=true aggressive=true
+combat goblin: hitsLanded=6 anims=1x6 target=Player429
+xp goblin: dead=true rpg before L2/0 after L2/15 expected +15 gained=15
+cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+cmd ok  (1) /summon miggi_exploration:orc 0.5 -60 4.0 {PersistenceRequired:1b}
+  orc t+40: dist=8.58 hp(player)=20.0 navDone=false target=true aggressive=true
+  orc t+80: dist=5.61 hp(player)=20.0 navDone=false target=true aggressive=true
+  orc t+120: dist=2.54 hp(player)=20.0 navDone=false target=true aggressive=true
+  orc t+160: dist=2.49 hp(player)=20.0 navDone=false target=true aggressive=true
+combat orc: hitsLanded=1 anims=3x1 target=Player429
+xp orc: dead=true rpg before L2/15 after L2/55 expected +40 gained=40
+cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+cmd ok  (1) /summon miggi_exploration:wild_boar 0.5 -60 4.0 {PersistenceRequired:1b}
+  wild_boar t+40: dist=7.17 hp(player)=20.0 navDone=false target=true aggressive=true
+  wild_boar t+80: dist=3.64 hp(player)=20.0 navDone=false target=true aggressive=true
+  wild_boar t+120: dist=4.14 hp(player)=20.0 navDone=true target=true aggressive=true
+  wild_boar t+160: dist=0.84 hp(player)=20.0 navDone=false target=true aggressive=true
+combat wild_boar: hitsLanded=4 anims=4x5 target=Player429
+xp wild_boar: dead=true rpg before L2/55 after L2/75 expected +20 gained=20
+cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+cmd ok  (1) /summon miggi_exploration:minotaur 0.5 -60 11.5 {PersistenceRequired:1b}
+  minotaur t+40: dist=26.31 hp(player)=20.0 navDone=false target=true aggressive=true
+  minotaur t+80: dist=21.67 hp(player)=20.0 navDone=true target=true aggressive=false
+  minotaur t+120: dist=1.21 hp(player)=15.5 navDone=true target=true aggressive=false
+  minotaur t+160: dist=4.34 hp(player)=19.8 navDone=true target=true aggressive=false
+  minotaur t+200: dist=8.53 hp(player)=16.4 navDone=false target=true aggressive=true
+  minotaur t+240: dist=2.04 hp(player)=16.2 navDone=false target=true aggressive=true
+  minotaur t+280: dist=4.06 hp(player)=12.8 navDone=true target=true aggressive=false
+combat minotaur: hitsLanded=5 anims=5x2 6x1 7x1 8x2 9x2 target=Player429
+xp minotaur: dead=true rpg before L2/75 after L5/125 expected +500 gained=500
+cmd ok  (1) /gamemode creative @p
+OK   combat + rpg xp
+cmd ok  (1) /gamemode spectator @p
+cmd ok  (1) /tp @p 422 -30 -26 0 40
+cmd ok  (36) /forceload add 384 -16 464 64
+cmd ok  (1) /place template miggi_exploration:arcane_grove 400 -60 0
+arcane_grove template: 1572 blocks {minecraft:amethyst_block=40, minecraft:azalea_leaves=194, minecraft:blue_orchid=35, minecraft:dark_oak_log=56, minecraft:flowering_azalea_leaves=754, minecraft:lantern=4, minecraft:moss_block=341, minecraft:mossy_stone_bricks=38, minecraft:polished_deepslate=89, minecraft:sea_lantern=1, minecraft:shroomlight=17, minecraft:soul_lantern=3}
+OK   template arcane_grove
+cmd ok  (1) /tp @p 622 -30 -26 0 40
+cmd ok  (36) /forceload add 584 -16 664 64
+cmd ok  (1) /place template miggi_exploration:arcane_watchtower 600 -60 0
+arcane_watchtower template: 1514 blocks {miggi_exploration:cracked_rune_stone=103, miggi_exploration:glowing_rune_stone=4, miggi_exploration:mossy_rune_stone=235, miggi_exploration:rune_altar=1, miggi_exploration:rune_pillar=69, miggi_exploration:rune_stone=852, minecraft:moss_block=230, minecraft:stone_brick_stairs=20}
+OK   template arcane_watchtower
+cmd ok  (1) /tp @p 822 -30 -26 0 40
+cmd ok  (36) /forceload add 784 -16 864 64
+cmd ok  (1) /place template miggi_exploration:forgotten_ruin 800 -60 0
+forgotten_ruin template: 989 blocks {miggi_exploration:cracked_rune_stone=206, miggi_exploration:glowing_rune_stone=17, miggi_exploration:rune_stone=644, minecraft:lodestone=1, minecraft:polished_deepslate=121}
+OK   template forgotten_ruin
+cmd ok  (1) /tp @p 1022 -30 -26 0 40
+cmd ok  (36) /forceload add 984 -16 1064 64
+cmd ok  (1) /place template miggi_exploration:labyrinth_entrance 1000 -60 0
+labyrinth_entrance template: 3867 blocks {miggi_exploration:cracked_rune_stone=1113, miggi_exploration:glowing_rune_stone=13, miggi_exploration:mossy_rune_stone=255, miggi_exploration:rune_altar=5, miggi_exploration:rune_pillar=226, miggi_exploration:rune_stone=2163, minecraft:iron_bars=15, minecraft:polished_blackstone_bricks=77}
+OK   template labyrinth_entrance
+cmd ok  (1) /tp @p 1222 -30 -26 0 40
+cmd ok  (36) /forceload add 1184 -16 1264 64
+cmd ok  (1) /place template miggi_exploration:labyrinth_trial 1200 -60 0
+labyrinth_trial template: 5967 blocks {miggi_exploration:cracked_rune_stone=213, miggi_exploration:glowing_rune_stone=41, miggi_exploration:mossy_rune_stone=1790, miggi_exploration:rune_stone=1780, minecraft:chest=2, minecraft:stone_bricks=2141}
+OK   template labyrinth_trial
+cmd ok  (1) /tp @p 1422 -30 -26 0 40
+cmd ok  (36) /forceload add 1384 -16 1464 64
+cmd ok  (1) /place template miggi_exploration:labyrinth_vault 1400 -60 0
+labyrinth_vault template: 1805 blocks {miggi_exploration:cracked_rune_stone=52, miggi_exploration:glowing_rune_stone=13, miggi_exploration:mossy_rune_stone=655, miggi_exploration:rune_stone=553, minecraft:chest=3, minecraft:stone_bricks=529}
+OK   template labyrinth_vault
+cmd ok  (1) /tp @p 1622 -30 -26 0 40
+cmd ok  (121) /forceload add 1536 -64 1696 96
+cmd ok  (1) /place structure miggi_exploration:arcane_grove 1600 -60 0
+arcane_grove structure: 1589 blocks {minecraft:amethyst_block=40, minecraft:azalea_leaves=191, minecraft:blue_orchid=39, minecraft:dark_oak_log=56, minecraft:flowering_azalea_leaves=751, minecraft:glow_lichen=18, minecraft:lantern=4, minecraft:moss_block=341, minecraft:mossy_stone_bricks=38, minecraft:polished_deepslate=89, minecraft:sea_lantern=1, minecraft:shroomlight=17, minecraft:soul_lantern=4}
+OK   structure arcane_grove
+cmd ok  (1) /tp @p 1822 -30 -26 0 40
+cmd ok  (121) /forceload add 1736 -64 1896 96
+cmd ok  (1) /place structure miggi_exploration:arcane_watchtower 1800 -60 0
+arcane_watchtower structure: 1514 blocks {miggi_exploration:cracked_rune_stone=103, miggi_exploration:glowing_rune_stone=4, miggi_exploration:mossy_rune_stone=235, miggi_exploration:rune_altar=1, miggi_exploration:rune_pillar=69, miggi_exploration:rune_stone=852, minecraft:moss_block=230, minecraft:stone_brick_stairs=20}
+OK   structure arcane_watchtower
+cmd ok  (1) /tp @p 2022 -30 -26 0 40
+cmd ok  (121) /forceload add 1936 -64 2096 96
+cmd ok  (1) /place structure miggi_exploration:forgotten_ruin 2000 -60 0
+forgotten_ruin structure: 989 blocks {miggi_exploration:cracked_rune_stone=206, miggi_exploration:glowing_rune_stone=17, miggi_exploration:rune_stone=644, minecraft:lodestone=1, minecraft:polished_deepslate=121}
+OK   structure forgotten_ruin
+cmd ok  (1) /gamemode creative @p
+cmd ok  (0) /gamemode creative @p
+cmd ok  (1) /tp @p 3000.5 -60 -6.5 0 12
+cmd ok  (9) /forceload add 2990 -16 3020 16
+cmd ok  (1) /setblock 2994 -60 0 miggi_exploration:arcane_log
+cmd ok  (1) /setblock 2994 -59 0 miggi_exploration:arcane_log
+cmd ok  (1) /setblock 2995 -60 0 miggi_exploration:arcane_log[axis=x]
+cmd ok  (1) /setblock 2995 -59 0 miggi_exploration:arcane_log[axis=x]
+cmd ok  (1) /setblock 2996 -60 0 miggi_exploration:ancient_bark
+cmd ok  (1) /setblock 2996 -59 0 miggi_exploration:ancient_bark
+cmd ok  (1) /setblock 2997 -60 0 miggi_exploration:arcane_planks
+cmd ok  (1) /setblock 2997 -59 0 miggi_exploration:arcane_planks
+cmd ok  (1) /setblock 2998 -60 0 miggi_exploration:arcane_leaves
+cmd ok  (1) /setblock 2998 -59 0 miggi_exploration:arcane_leaves
+cmd ok  (1) /setblock 2999 -60 0 miggi_exploration:rune_stone
+cmd ok  (1) /setblock 2999 -59 0 miggi_exploration:rune_stone
+cmd ok  (1) /setblock 3000 -60 0 miggi_exploration:cracked_rune_stone
+cmd ok  (1) /setblock 3000 -59 0 miggi_exploration:cracked_rune_stone
+cmd ok  (1) /setblock 3001 -60 0 miggi_exploration:mossy_rune_stone
+cmd ok  (1) /setblock 3001 -59 0 miggi_exploration:mossy_rune_stone
+cmd ok  (1) /setblock 3002 -60 0 miggi_exploration:glowing_rune_stone
+cmd ok  (1) /setblock 3002 -59 0 miggi_exploration:glowing_rune_stone
+cmd ok  (1) /setblock 3003 -60 0 miggi_exploration:rune_pillar
+cmd ok  (1) /setblock 3003 -59 0 miggi_exploration:rune_pillar
+cmd ok  (1) /setblock 3004 -60 0 miggi_exploration:rune_altar
+cmd ok  (1) /setblock 3004 -59 0 miggi_exploration:rune_altar
+cmd ERR /clear @p -> No items were found on player Player429
+cmd ok  (1) /give @p miggi_exploration:arcane_shard
+cmd ok  (1) /give @p miggi_exploration:goblin_talisman
+cmd ok  (1) /give @p miggi_exploration:orc_fang
+cmd ok  (1) /give @p miggi_exploration:minotaur_horn
+cmd ok  (1) /give @p miggi_exploration:ancient_tablet
+cmd ok  (1) /give @p miggi_exploration:arcane_log
+cmd ok  (1) /give @p miggi_exploration:arcane_leaves
+cmd ok  (1) /give @p miggi_exploration:rune_altar
+cmd ok  (1) /give @p miggi_exploration:glowing_rune_stone
+OK   blocks + items
+cmd ok  (0) /gamerule send_command_feedback false
+cmd ok  (6000) /time set noon
+cmd ok  (0) /gamerule advance_time false
+cmd ok  (1607) /locate biome miggi_exploration:arcane_forest
+biolith loaded=true
+arcane forest at: 1191 -1110
+cmd ok  (1) /gamemode spectator @p
+cmd ok  (25) /forceload add 1159 -1142 1223 -1078
+cmd ok  (1) /tp @p 1191 130 -1150 0 35
+arcane forest ground height 67
+cmd ok  (1) /tp @p 1191 69 -1110 30 5
+cmd ok  (1586) /locate structure miggi_exploration:forgotten_ruin
+cmd ok  (1827) /locate structure miggi_exploration:arcane_grove
+cmd ok  (1889) /locate structure miggi_exploration:arcane_watchtower
+OK   natural world: arcane forest + structures
+done

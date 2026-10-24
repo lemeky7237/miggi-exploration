@@ -1,0 +1,400 @@
+[12:03:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:goblin 4.50 -60 3.70 {PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] goblin path found=true onGround=true y=-60.0
+[12:03:45] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] goblin walk moved 2.92 blocks in 14 ticks
+[12:03:45] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   mob goblin
+[12:03:45] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 0.500000, -60.000000, 0.500000
+[12:03:45] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 0.5 -60 0.5 0 6
+[12:03:45] [Server thread/INFO] (Minecraft) System chat: Summoned new Orc
+[12:03:45] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:orc -1.10 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+[12:03:45] [Server thread/INFO] (Minecraft) System chat: Summoned new Orc
+[12:03:45] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:orc 2.10 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:46] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] orc hitbox width=1.0 height=2.3499999046325684
+[12:03:49] [Server thread/INFO] (Minecraft) System chat: Summoned new Orc
+[12:03:49] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:orc 4.50 -60 5.10 {PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:49] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] orc path found=true onGround=true y=-60.0
+[12:03:50] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] orc walk moved 0.52 blocks in 14 ticks
+[12:03:50] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   mob orc
+[12:03:50] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 0.500000, -60.000000, 0.500000
+[12:03:50] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 0.5 -60 0.5 0 16
+[12:03:50] [Server thread/INFO] (Minecraft) System chat: Summoned new Wild Boar
+[12:03:50] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:wild_boar -1.30 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+[12:03:50] [Server thread/INFO] (Minecraft) System chat: Summoned new Wild Boar
+[12:03:50] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:wild_boar 2.30 -60 5.10 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:51] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] wild_boar hitbox width=1.2000000476837158 height=1.5
+[12:03:52] [Server thread/INFO] (Minecraft) System chat: Summoned new Wild Boar
+[12:03:52] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:wild_boar 4.50 -60 5.10 {PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:53] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] wild_boar path found=true onGround=true y=-60.0
+[12:03:54] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] wild_boar walk moved 2.30 blocks in 14 ticks
+[12:03:54] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   mob wild_boar
+[12:03:54] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 0.500000, -60.000000, 0.500000
+[12:03:54] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 0.5 -60 0.5 0 -8
+[12:03:54] [Server thread/INFO] (Minecraft) System chat: Summoned new Minotaur
+[12:03:54] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:minotaur -2.10 -60 8.00 {NoAI:1b,PersistenceRequired:1b,Rotation:[180f,0f]}
+[12:03:54] [Server thread/INFO] (Minecraft) System chat: Summoned new Minotaur
+[12:03:54] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:minotaur 3.10 -60 8.00 {NoAI:1b,PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:03:55] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] minotaur hitbox width=1.7999999523162842 height=3.200000047683716
+[12:04:04] [Server thread/INFO] (Minecraft) System chat: Summoned new Minotaur
+[12:04:04] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:minotaur 4.50 -60 8.00 {PersistenceRequired:1b,Rotation:[90f,0f]}
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] minotaur path found=true onGround=true y=-60.0
+[12:04:05] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] minotaur walk moved 2.17 blocks in 14 ticks
+[12:04:05] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   mob minotaur
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 0.500000, -60.000000, 0.500000
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 0.5 -60 0.5 0 10
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Set Player429's game mode to Survival Mode
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /gamemode survival @p
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Applied effect Resistance to Player429
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:resistance 600 3 true
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Applied effect Regeneration to Player429
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:regeneration 600 2 true
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Applied effect Instant Health to Player429
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+[12:04:05] [Server thread/INFO] (Minecraft) System chat: Summoned new Goblin
+[12:04:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:goblin 0.5 -60 4.0 {PersistenceRequired:1b}
+[12:04:07] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   goblin t+40: dist=0.76 hp(player)=20.0 navDone=true target=true aggressive=true
+[12:04:08] [Server thread/INFO] (Minecraft) Player Player429 standing on air - force-sending blocks below
+[12:04:09] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   goblin t+80: dist=1.09 hp(player)=19.4 navDone=true target=true aggressive=true
+[12:04:11] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   goblin t+120: dist=1.15 hp(player)=19.4 navDone=false target=true aggressive=true
+[12:04:13] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   goblin t+160: dist=1.64 hp(player)=20.0 navDone=true target=true aggressive=true
+[12:04:13] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] combat goblin: hitsLanded=6 anims=1x6 target=Player429
+[12:04:13] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] xp goblin: dead=true rpg before L2/0 after L2/15 expected +15 gained=15
+[12:04:13] [Server thread/INFO] (Minecraft) System chat: Applied effect Instant Health to Player429
+[12:04:13] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+[12:04:13] [Server thread/INFO] (Minecraft) System chat: Summoned new Orc
+[12:04:13] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:orc 0.5 -60 4.0 {PersistenceRequired:1b}
+[12:04:13] [Render thread/INFO] (Minecraft) Loaded 41 advancements
+[12:04:15] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   orc t+40: dist=8.58 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:17] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   orc t+80: dist=5.61 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:19] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   orc t+120: dist=2.54 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:21] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   orc t+160: dist=2.49 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:21] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] combat orc: hitsLanded=1 anims=3x1 target=Player429
+[12:04:21] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] xp orc: dead=true rpg before L2/15 after L2/55 expected +40 gained=40
+[12:04:21] [Server thread/INFO] (Minecraft) System chat: Applied effect Instant Health to Player429
+[12:04:21] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+[12:04:21] [Server thread/INFO] (Minecraft) System chat: Summoned new Wild Boar
+[12:04:21] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:wild_boar 0.5 -60 4.0 {PersistenceRequired:1b}
+[12:04:23] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   wild_boar t+40: dist=7.17 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:25] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   wild_boar t+80: dist=3.64 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:26] [Server thread/INFO] (Minecraft) Player Player429 standing on air - force-sending blocks below
+[12:04:27] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   wild_boar t+120: dist=4.14 hp(player)=20.0 navDone=true target=true aggressive=true
+[12:04:29] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   wild_boar t+160: dist=0.84 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:29] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] combat wild_boar: hitsLanded=4 anims=4x5 target=Player429
+[12:04:29] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] xp wild_boar: dead=true rpg before L2/55 after L2/75 expected +20 gained=20
+[12:04:29] [Server thread/INFO] (Minecraft) System chat: Applied effect Instant Health to Player429
+[12:04:29] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /effect give @p minecraft:instant_health 1 5 true
+[12:04:29] [Server thread/INFO] (Minecraft) System chat: Summoned new Minotaur
+[12:04:29] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /summon miggi_exploration:minotaur 0.5 -60 11.5 {PersistenceRequired:1b}
+[12:04:31] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+40: dist=26.31 hp(player)=20.0 navDone=false target=true aggressive=true
+[12:04:33] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+80: dist=21.67 hp(player)=20.0 navDone=true target=true aggressive=false
+[12:04:35] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+120: dist=1.21 hp(player)=15.5 navDone=true target=true aggressive=false
+[12:04:37] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+160: dist=4.34 hp(player)=19.8 navDone=true target=true aggressive=false
+[12:04:39] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+200: dist=8.53 hp(player)=16.4 navDone=false target=true aggressive=true
+[12:04:41] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+240: dist=2.04 hp(player)=16.2 navDone=false target=true aggressive=true
+[12:04:43] [Server thread/INFO] (Minecraft) Player Player429 standing on air - force-sending blocks below
+[12:04:43] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST]   minotaur t+280: dist=4.06 hp(player)=12.8 navDone=true target=true aggressive=false
+[12:04:44] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] combat minotaur: hitsLanded=5 anims=5x2 6x1 7x1 8x2 9x2 target=Player429
+[12:04:44] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] xp minotaur: dead=true rpg before L2/75 after L5/125 expected +500 gained=500
+[12:04:44] [Server thread/INFO] (Minecraft) System chat: Set Player429's game mode to Creative Mode
+[12:04:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /gamemode creative @p
+[12:04:44] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   combat + rpg xp
+[12:04:44] [Server thread/INFO] (Minecraft) System chat: Set Player429's game mode to Spectator Mode
+[12:04:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /gamemode spectator @p
+[12:04:44] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 422.500000, -30.000000, -25.500000
+[12:04:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 422 -30 -26 0 40
+[12:04:44] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [24, -1] to [29, 4] to be force loaded
+[12:04:44] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 384 -16 464 64
+[12:04:44] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2157ms or 43 ticks behind
+[12:04:45] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:arcane_grove" at 400, -60, 0
+[12:04:45] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:arcane_grove 400 -60 0
+[12:04:46] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane_grove template: 1572 blocks {minecraft:amethyst_block=40, minecraft:azalea_leaves=194, minecraft:blue_orchid=35, minecraft:dark_oak_log=56, minecraft:flowering_azalea_leaves=754, minecraft:lantern=4, minecraft:moss_block=341, minecraft:mossy_stone_bricks=38, minecraft:polished_deepslate=89, minecraft:sea_lantern=1, minecraft:shroomlight=17, minecraft:soul_lantern=3}
+[12:04:47] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template arcane_grove
+[12:04:47] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 622.500000, -30.000000, -25.500000
+[12:04:47] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 622 -30 -26 0 40
+[12:04:47] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [36, -1] to [41, 4] to be force loaded
+[12:04:47] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 584 -16 664 64
+[12:04:49] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:arcane_watchtower" at 600, -60, 0
+[12:04:49] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:arcane_watchtower 600 -60 0
+[12:04:51] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane_watchtower template: 1514 blocks {miggi_exploration:cracked_rune_stone=103, miggi_exploration:glowing_rune_stone=4, miggi_exploration:mossy_rune_stone=235, miggi_exploration:rune_altar=1, miggi_exploration:rune_pillar=69, miggi_exploration:rune_stone=852, minecraft:moss_block=230, minecraft:stone_brick_stairs=20}
+[12:04:51] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template arcane_watchtower
+[12:04:51] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 822.500000, -30.000000, -25.500000
+[12:04:51] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 822 -30 -26 0 40
+[12:04:51] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [49, -1] to [54, 4] to be force loaded
+[12:04:51] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 784 -16 864 64
+[12:04:51] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:forgotten_ruin" at 800, -60, 0
+[12:04:51] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:forgotten_ruin 800 -60 0
+[12:04:52] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] forgotten_ruin template: 989 blocks {miggi_exploration:cracked_rune_stone=206, miggi_exploration:glowing_rune_stone=17, miggi_exploration:rune_stone=644, minecraft:lodestone=1, minecraft:polished_deepslate=121}
+[12:04:53] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template forgotten_ruin
+[12:04:53] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1022.500000, -30.000000, -25.500000
+[12:04:53] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1022 -30 -26 0 40
+[12:04:53] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [61, -1] to [66, 4] to be force loaded
+[12:04:53] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 984 -16 1064 64
+[12:04:56] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:labyrinth_entrance" at 1000, -60, 0
+[12:04:56] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:labyrinth_entrance 1000 -60 0
+[12:04:57] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] labyrinth_entrance template: 3867 blocks {miggi_exploration:cracked_rune_stone=1113, miggi_exploration:glowing_rune_stone=13, miggi_exploration:mossy_rune_stone=255, miggi_exploration:rune_altar=5, miggi_exploration:rune_pillar=226, miggi_exploration:rune_stone=2163, minecraft:iron_bars=15, minecraft:polished_blackstone_bricks=77}
+[12:04:57] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template labyrinth_entrance
+[12:04:57] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1222.500000, -30.000000, -25.500000
+[12:04:57] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1222 -30 -26 0 40
+[12:04:57] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [74, -1] to [79, 4] to be force loaded
+[12:04:57] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 1184 -16 1264 64
+[12:04:58] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:labyrinth_trial" at 1200, -60, 0
+[12:04:58] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:labyrinth_trial 1200 -60 0
+[12:04:59] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] labyrinth_trial template: 5967 blocks {miggi_exploration:cracked_rune_stone=213, miggi_exploration:glowing_rune_stone=41, miggi_exploration:mossy_rune_stone=1790, miggi_exploration:rune_stone=1780, minecraft:chest=2, minecraft:stone_bricks=2141}
+[12:05:00] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template labyrinth_trial
+[12:05:00] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1422.500000, -30.000000, -25.500000
+[12:05:00] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1422 -30 -26 0 40
+[12:05:00] [Server thread/INFO] (Minecraft) System chat: Marked 36 chunks in minecraft:overworld from [86, -1] to [91, 4] to be force loaded
+[12:05:00] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (36) /forceload add 1384 -16 1464 64
+[12:05:00] [Server thread/INFO] (Minecraft) System chat: Loaded template "miggi_exploration:labyrinth_vault" at 1400, -60, 0
+[12:05:00] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place template miggi_exploration:labyrinth_vault 1400 -60 0
+[12:05:01] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2356ms or 47 ticks behind
+[12:05:02] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] labyrinth_vault template: 1805 blocks {miggi_exploration:cracked_rune_stone=52, miggi_exploration:glowing_rune_stone=13, miggi_exploration:mossy_rune_stone=655, miggi_exploration:rune_stone=553, minecraft:chest=3, minecraft:stone_bricks=529}
+[12:05:03] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   template labyrinth_vault
+[12:05:03] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1622.500000, -30.000000, -25.500000
+[12:05:03] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1622 -30 -26 0 40
+[12:05:03] [Server thread/INFO] (Minecraft) System chat: Marked 121 chunks in minecraft:overworld from [96, -4] to [106, 6] to be force loaded
+[12:05:03] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (121) /forceload add 1536 -64 1696 96
+[12:05:05] [Server thread/INFO] (Minecraft) System chat: Generated structure "miggi_exploration:arcane_grove" at 1600, -60, 0
+[12:05:05] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place structure miggi_exploration:arcane_grove 1600 -60 0
+[12:05:06] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane_grove structure: 1589 blocks {minecraft:amethyst_block=40, minecraft:azalea_leaves=191, minecraft:blue_orchid=39, minecraft:dark_oak_log=56, minecraft:flowering_azalea_leaves=751, minecraft:glow_lichen=18, minecraft:lantern=4, minecraft:moss_block=341, minecraft:mossy_stone_bricks=38, minecraft:polished_deepslate=89, minecraft:sea_lantern=1, minecraft:shroomlight=17, minecraft:soul_lantern=4}
+[12:05:06] [Render thread/INFO] (Minecraft) Resizing Chunk Sections Command Buffer, capacity limit of 128 reached during a single frame. New capacity will be 256.
+[12:05:06] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   structure arcane_grove
+[12:05:06] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1822.500000, -30.000000, -25.500000
+[12:05:06] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1822 -30 -26 0 40
+[12:05:07] [Server thread/INFO] (Minecraft) System chat: Marked 121 chunks in minecraft:overworld from [108, -4] to [118, 6] to be force loaded
+[12:05:07] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (121) /forceload add 1736 -64 1896 96
+[12:05:07] [Server thread/INFO] (Minecraft) System chat: Generated structure "miggi_exploration:arcane_watchtower" at 1800, -60, 0
+[12:05:07] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place structure miggi_exploration:arcane_watchtower 1800 -60 0
+[12:05:08] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane_watchtower structure: 1514 blocks {miggi_exploration:cracked_rune_stone=103, miggi_exploration:glowing_rune_stone=4, miggi_exploration:mossy_rune_stone=235, miggi_exploration:rune_altar=1, miggi_exploration:rune_pillar=69, miggi_exploration:rune_stone=852, minecraft:moss_block=230, minecraft:stone_brick_stairs=20}
+[12:05:09] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   structure arcane_watchtower
+[12:05:09] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 2022.500000, -30.000000, -25.500000
+[12:05:09] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 2022 -30 -26 0 40
+[12:05:10] [Server thread/INFO] (Minecraft) System chat: Marked 121 chunks in minecraft:overworld from [121, -4] to [131, 6] to be force loaded
+[12:05:10] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (121) /forceload add 1936 -64 2096 96
+[12:05:10] [Server thread/INFO] (Minecraft) System chat: Generated structure "miggi_exploration:forgotten_ruin" at 2000, -60, 0
+[12:05:10] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /place structure miggi_exploration:forgotten_ruin 2000 -60 0
+[12:05:11] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] forgotten_ruin structure: 989 blocks {miggi_exploration:cracked_rune_stone=206, miggi_exploration:glowing_rune_stone=17, miggi_exploration:rune_stone=644, minecraft:lodestone=1, minecraft:polished_deepslate=121}
+[12:05:11] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   structure forgotten_ruin
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Set Player429's game mode to Creative Mode
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /gamemode creative @p
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (0) /gamemode creative @p
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 3000.500000, -60.000000, -6.500000
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 3000.5 -60 -6.5 0 12
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Marked 9 chunks in minecraft:overworld from [186, -1] to [188, 1] to be force loaded
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (9) /forceload add 2990 -16 3020 16
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2994, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2994 -60 0 miggi_exploration:arcane_log
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2994, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2994 -59 0 miggi_exploration:arcane_log
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2995, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2995 -60 0 miggi_exploration:arcane_log[axis=x]
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2995, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2995 -59 0 miggi_exploration:arcane_log[axis=x]
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2996, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2996 -60 0 miggi_exploration:ancient_bark
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2996, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2996 -59 0 miggi_exploration:ancient_bark
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2997, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2997 -60 0 miggi_exploration:arcane_planks
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2997, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2997 -59 0 miggi_exploration:arcane_planks
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2998, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2998 -60 0 miggi_exploration:arcane_leaves
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2998, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2998 -59 0 miggi_exploration:arcane_leaves
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2999, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2999 -60 0 miggi_exploration:rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 2999, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 2999 -59 0 miggi_exploration:rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3000, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3000 -60 0 miggi_exploration:cracked_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3000, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3000 -59 0 miggi_exploration:cracked_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3001, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3001 -60 0 miggi_exploration:mossy_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3001, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3001 -59 0 miggi_exploration:mossy_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3002, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3002 -60 0 miggi_exploration:glowing_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3002, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3002 -59 0 miggi_exploration:glowing_rune_stone
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3003, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3003 -60 0 miggi_exploration:rune_pillar
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3003, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3003 -59 0 miggi_exploration:rune_pillar
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3004, -60, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3004 -60 0 miggi_exploration:rune_altar
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Changed the block at 3004, -59, 0
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /setblock 3004 -59 0 miggi_exploration:rune_altar
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ERR /clear @p -> No items were found on player Player429
+[12:05:11] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Arcane Shard] to Player429
+[12:05:11] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:arcane_shard
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Goblin Talisman] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:goblin_talisman
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Orc Fang] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:orc_fang
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Minotaur Horn] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:minotaur_horn
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Ancient Tablet] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:ancient_tablet
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Arcane Wood] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:arcane_log
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Arcane Leaves] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:arcane_leaves
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Rune Altar] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:rune_altar
+[12:05:12] [Server thread/INFO] (Minecraft) System chat: Gave 1 [Glowing Rune Stone] to Player429
+[12:05:12] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /give @p miggi_exploration:glowing_rune_stone
+[12:05:15] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   blocks + items
+[12:05:15] [Server thread/INFO] (Minecraft) Player429 lost connection: Disconnected
+[12:05:15] [Server thread/INFO] (Minecraft) System chat: Player429 left the game
+[12:05:15] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[12:05:15] [Server thread/INFO] (Minecraft) Stopping server
+[12:05:15] [Server thread/INFO] (Minecraft) Saving players
+[12:05:15] [Server thread/INFO] (Minecraft) Saving worlds
+[12:05:17] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[12:05:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[12:05:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[12:05:19] [Worker-Main-1/INFO] (Minecraft) Loaded 1866 advancements
+[12:05:19] [Render thread/INFO] (biolith) Applying biome placement data from 1 source(s).
+[12:05:19] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.GenericMessageScreen@1b67c945
+[12:05:20] [Render thread/INFO] (BiomeModificationImpl) Applied 9 biome modifications to 5 of 68 new biomes in 746.0 μs
+[12:05:20] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 26.3
+[12:05:20] [Server thread/INFO] (Minecraft) Generating keypair
+[12:05:20] [Server thread/INFO] (Minecraft) Selecting global world spawn...
+[12:05:23] [Server thread/INFO] (Minecraft) Loading 0 persistent chunks...
+[12:05:23] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[12:05:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[12:05:23] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[12:05:23] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:23] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:23] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Server thread/INFO] (Minecraft) Loading 48 chunks for player spawn...
+[12:05:24] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:24] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:24] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:24] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:24] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:24] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:25] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:25] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:25] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:25] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:25] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:25] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:25] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:25] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[12:05:26] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:26] [Server thread/INFO] (Minecraft) Preparing spawn area: 23%
+[12:05:26] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:26] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2015ms or 40 ticks behind
+[12:05:26] [Server thread/INFO] (Minecraft) Preparing spawn area: 23%
+[12:05:26] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:26] [Server thread/INFO] (Minecraft) Preparing spawn area: 30%
+[12:05:26] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:27] [Server thread/INFO] (Minecraft) Preparing spawn area: 30%
+[12:05:27] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:27] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:27] [Server thread/INFO] (Minecraft) Preparing spawn area: 30%
+[12:05:27] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:27] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:27] [Server thread/INFO] (Minecraft) Preparing spawn area: 30%
+[12:05:28] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:28] [Server thread/INFO] (Minecraft) Preparing spawn area: 30%
+[12:05:28] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:28] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:28] [Server thread/INFO] (Minecraft) Preparing spawn area: 58%
+[12:05:29] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:29] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:29] [Server thread/INFO] (Minecraft) Preparing spawn area: 58%
+[12:05:29] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:29] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:29] [Server thread/INFO] (Minecraft) Preparing spawn area: 58%
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:30] [Server thread/INFO] (Minecraft) Preparing spawn area: 100%
+[12:05:30] [Server thread/INFO] (Minecraft) Time elapsed: 10046 ms
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:30] [Server thread/INFO] (Minecraft) Player429[local:E:80cd89a1] logged in with entity id 66 at (7.5, 72.0, 10.5)
+[12:05:30] [Server thread/INFO] (Minecraft) System chat: Player429 joined the game
+[12:05:30] [Server thread/INFO] (Minecraft) Changing view distance to 5, from 10
+[12:05:30] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[12:05:30] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:30] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:31] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:31] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:31] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:31] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:32] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@34b6d8cf
+[12:05:32] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: null
+[12:05:43] [Server thread/INFO] (Minecraft) System chat: Game rule send_command_feedback is now set to false
+[12:05:43] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (0) /gamerule send_command_feedback false
+[12:05:43] [Server thread/INFO] (Minecraft) System chat: Set minecraft:overworld to time marker minecraft:noon
+[12:05:43] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (6000) /time set noon
+[12:05:43] [Server thread/INFO] (Minecraft) System chat: Game rule advance_time is now set to false
+[12:05:43] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (0) /gamerule advance_time false
+[12:05:43] [Server thread/INFO] (Minecraft) System chat: The nearest miggi_exploration:arcane_forest is at [1184, 81, -1087] (1607 blocks away)
+[12:05:43] [Server thread/INFO] (Minecraft) Locating element miggi_exploration:arcane_forest took 220 ms
+[12:05:43] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1607) /locate biome miggi_exploration:arcane_forest
+[12:05:43] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] biolith loaded=true
+[12:05:43] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane forest at: 1191 -1110
+[12:05:43] [Server thread/INFO] (Minecraft) System chat: Set Player429's game mode to Spectator Mode
+[12:05:43] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /gamemode spectator @p
+[12:05:46] [Server thread/INFO] (Minecraft) System chat: Marked 25 chunks in minecraft:overworld from [72, -72] to [76, -68] to be force loaded
+[12:05:46] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (25) /forceload add 1159 -1142 1223 -1078
+[12:05:46] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1191.500000, 130.000000, -1149.500000
+[12:05:46] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1191 130 -1150 0 35
+[12:05:55] [Render thread/INFO] (Minecraft) Resizing Chunk Sections Command Buffer, capacity limit of 256 reached during a single frame. New capacity will be 512.
+[12:05:55] [Render thread/INFO] (Minecraft) Resizing Chunk Sections Instanced, capacity limit of 128 reached during a single frame. New capacity will be 256.
+[12:05:55] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] arcane forest ground height 67
+[12:05:55] [Server thread/INFO] (Minecraft) System chat: Teleported Player429 to 1191.500000, 69.000000, -1109.500000
+[12:05:55] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1) /tp @p 1191 69 -1110 30 5
+[12:06:01] [Render thread/INFO] (Minecraft) Resizing Chunk Sections Command Buffer, capacity limit of 512 reached during a single frame. New capacity will be 1024.
+[12:06:01] [Server thread/INFO] (Minecraft) System chat: The nearest miggi_exploration:forgotten_ruin is at [1168, ~, -1072] (1586 blocks away)
+[12:06:01] [Server thread/INFO] (Minecraft) Locating element miggi_exploration:forgotten_ruin took 35 ms
+[12:06:01] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1586) /locate structure miggi_exploration:forgotten_ruin
+[12:06:01] [Server thread/INFO] (Minecraft) System chat: The nearest miggi_exploration:arcane_grove is at [544, ~, -1744] (1827 blocks away)
+[12:06:01] [Server thread/INFO] (Minecraft) Locating element miggi_exploration:arcane_grove took 41 ms
+[12:06:01] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1827) /locate structure miggi_exploration:arcane_grove
+[12:06:01] [Server thread/INFO] (Minecraft) System chat: The nearest miggi_exploration:arcane_watchtower is at [1184, ~, -1472] (1889 blocks away)
+[12:06:01] [Server thread/INFO] (Minecraft) Locating element miggi_exploration:arcane_watchtower took 26 ms
+[12:06:01] [Server thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] cmd ok  (1889) /locate structure miggi_exploration:arcane_watchtower
+[12:06:01] [Server thread/INFO] (Minecraft) Player429 lost connection: Disconnected
+[12:06:01] [Server thread/INFO] (Minecraft) System chat: Player429 left the game
+[12:06:01] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[12:06:02] [Server thread/INFO] (Minecraft) Stopping server
+[12:06:02] [Server thread/INFO] (Minecraft) Saving players
+[12:06:02] [Server thread/INFO] (Minecraft) Saving worlds
+[12:06:02] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[12:06:04] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[12:06:04] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[12:06:04] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] OK   natural world: arcane forest + structures
+[12:06:04] [Test thread/INFO] (Minecraft) [STDOUT]: [MIGGI-TEST] done
+[12:06:04] [Render thread/INFO] (Minecraft) Stopping!
+[12:06:04] [Render thread/WARN] (Minecraft) Couldn't acquire next surface texture with config Optional[Configuration[width=1280, height=720, presentMode=FIFO]]
+
+com.mojang.renderpearl.api.device.SurfaceException: Failed to acquire image, swapchain out of date
+	at knot//com.mojang.renderpearl.backend.vulkan.VulkanGpuSurface.acquireNextTexture(VulkanGpuSurface.java:277)
+	at knot//com.mojang.renderpearl.frontend.FrontendGpuSurface.acquireNextTexture(FrontendGpuSurface.java:71)
+	at knot//net.minecraft.client.Minecraft.renderFrame(Minecraft.java:1330)
+	at knot//net.minecraft.client.Minecraft.setScreenAndShow(Minecraft.java:2321)
+	at knot//net.minecraft.client.Minecraft.disconnect(Minecraft.java:2271)
+	at knot//net.minecraft.client.Minecraft.disconnectWithProgressScreen(Minecraft.java:2220)
+	at knot//net.minecraft.client.Minecraft.disconnectWithProgressScreen(Minecraft.java:2216)
+	at knot//net.minecraft.client.Minecraft.exitWorldAndClose(Minecraft.java:1169)
+	at knot//net.minecraft.client.main.Main.main(Main.java:296)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792843361833.json
+
+BUILD SUCCESSFUL in 3m 28s
+7 actionable tasks: 7 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+EXIT CODE 0
