@@ -322,6 +322,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 ctx.waitTicks(10);
                 cmd(server, "place template miggi_exploration:" + t + " " + bx + " -60 0");
                 ctx.waitTicks(20);
+                log(t + " template: " + countBlocks(server, bx - 4, -64, -4, bx + 70, 0, 70));
                 sp.getConnection().waitForChunksRender();
                 ctx.takeScreenshot("struct_template_" + t);
             });
@@ -337,12 +338,32 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 ctx.waitTicks(10);
                 cmd(server, "place structure miggi_exploration:" + t + " " + bx + " -60 0");
                 ctx.waitTicks(20);
+                log(t + " structure: " + countBlocks(server, bx - 70, -64, -70, bx + 70, 0, 70));
                 sp.getConnection().waitForChunksRender();
                 ctx.takeScreenshot("struct_structure_" + t);
             });
             x += 200;
         }
         cmd(server, "gamemode creative @p");
+    }
+
+    /** Server-side truth: which non-terrain blocks exist in the box (flat world terrain is bedrock/dirt/grass). */
+    private String countBlocks(TestServerContext server, int x0, int y0, int z0, int x1, int y1, int z1) {
+        return server.computeOnServer(s -> {
+            var level = s.overworld();
+            java.util.Map<String, Integer> counts = new java.util.TreeMap<>();
+            var pos = new net.minecraft.core.BlockPos.MutableBlockPos();
+            int total = 0;
+            for (int x = x0; x <= x1; x++) for (int y = y0; y <= y1; y++) for (int z = z0; z <= z1; z++) {
+                var st = level.getBlockState(pos.set(x, y, z));
+                if (st.isAir()) continue;
+                String id = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(st.getBlock()).toString();
+                if (id.equals("minecraft:bedrock") || id.equals("minecraft:dirt") || id.equals("minecraft:grass_block")) continue;
+                counts.merge(id, 1, Integer::sum);
+                total++;
+            }
+            return total + " blocks " + counts;
+        });
     }
 
     // ------------------------------------------------------------------ blocks and items
