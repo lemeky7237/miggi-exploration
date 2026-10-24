@@ -61,3 +61,6 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 사망 시 attachment는 복사되어 레벨/XP가 유지된다. 사망 후 리스폰 시 `ServerPlayerEvents.AFTER_RESPAWN`에서 MP를 최대치로 복원한다.
 - 장래 아이템 확장용 `bonusMana` 필드를 지금부터 저장한다.
 - 주의: 이 수정본은 로컬에서 Java 25/Gradle 빌드가 불가능하여 컴파일 검증되지 않았다. GitHub Actions의 실제 빌드 및 서버 구동 로그를 확인한 뒤 통합해야 한다.
+
+## 전용 3D 몬스터 모델 시도
+`MODEL_IMPLEMENTATION.md` 참고. 기존 바닐라 렌더러를 커스텀 3D 큐브 모델과 256px 텍스처로 교체했으며 현재 컴파일/인게임 검증 전 초안임.

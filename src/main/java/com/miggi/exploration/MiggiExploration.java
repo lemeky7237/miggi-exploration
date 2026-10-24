@@ -34,6 +34,7 @@ public class MiggiExploration implements ModInitializer {
         .syncWith(RpgData.STREAM_CODEC, AttachmentSyncPredicate.targetOnly()));
 
     @Override public void onInitialize() {
+        com.miggi.exploration.mobs.ModMobs.initialize();
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             if (!alive) {
                 RpgData data = newPlayer.getAttachedOrElse(RPG_DATA, RpgData.INITIAL);

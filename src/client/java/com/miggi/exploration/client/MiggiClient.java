@@ -22,6 +22,7 @@ public class MiggiClient implements ClientModInitializer {
     private int settleTicks;
 
     @Override public void onInitializeClient() {
+        MonsterRenderers.initialize();
         KeyMapping.Category category = KeyMapping.Category.register(MiggiExploration.id("main"));
         journalKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.miggi_exploration.journal",
             InputConstants.Type.KEYBOARD, SDLScancode.SDL_SCANCODE_J, category));
