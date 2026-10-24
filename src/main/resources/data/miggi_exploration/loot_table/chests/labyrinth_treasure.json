@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 7
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ingot",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_scrap",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:ancient_tablet",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:minotaur_horn",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "miggi_exploration:arcane_shard",
+          "weight": 7
+        }
+      ]
+    }
+  ]
+}
