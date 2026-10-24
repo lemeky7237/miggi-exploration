@@ -92,3 +92,36 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 ### 기술 근거
 - Fabric 공식 엔티티 튜토리얼(26.2): https://docs.fabricmc.net/develop/entities/first-entity
 - Fabric 26.3 릴리스: https://www.fabricmc.net/2026/09/15/263.html
+
+
+## v0.6 — 필드 자연 스폰·드롭 테이블 (GPT 제작)
+### 이번에 바뀐 것
+- `MonsterSpawns.java`: 26.3 Fabric biome API `BiomeModifications.addSpawn`를 사용해 일반 몬스터 3종을 바닐라 오버월드 바이옴에 추가.
+  - 고블린: 숲/자작나무 숲/어두운 숲, weight 28, 무리 1~3
+  - 오크: 어두운 숲/타이가/오래된 가문비 타이가, weight 11, 무리 1~2
+  - 멧돼지: 숲/자작나무 숲/타이가, weight 22, 무리 1~3
+  - `weight`는 다른 몬스터와의 상대적인 등장 가중치이며 확률(%)이 아님.
+- `MiggiExploration.onInitialize`에서 엔티티 등록 직후 `MonsterSpawns.register()` 호출.
+- `data/miggi_exploration/loot_table/entities/`에 몬스터별 바닐라 아이템 기반 전리품 테이블 4개 추가.
+- 기존 `ServerLivingEntityEvents.AFTER_DEATH`의 RPG 경험치 지급은 **이미 구현**되어 있으므로 수정하지 않음: 고블린 15 / 오크 40 / 멧돼지 20 / 미노타우르스 500.
+- 미노타우르스는 **자연 스폰 목록에 넣지 않음** (미궁 전용 보스 예정).
+- 신규 의존성 / 삭제 파일 없음. 서버 AI 및 클라이언트 렌더링 코드 변경 없음.
+
+### 아직 안 된 것 / 확인 필요
+- 이 ZIP은 **로컬 Java 25 / Gradle 컴파일 및 전용 서버 부팅 검사 미실시**. GitHub `dev` Actions로 반드시 확인.
+- `BiomeModifications.addSpawn`의 26.3 소스 시그니처는 확인했지만, 실제 몬스터 자연 생성은 **클라이언트에서 별도 확인 필요**. 특히 스폰 배치 조건, 조명/지형, 몬스터 캡에 따라 등장하지 않을 수 있음.
+- 현재 멧돼지는 MONSTER 카테고리이며 낮에도 평범한 야생동물처럼 출현하도록 설계한 상태가 **아님**. 평화로운 동물 스폰으로 전환하려면 엔티티 카테고리와 AI 등 별도 설계 필요.
+- 드롭은 기존 바닐라 아이템의 초기 임시 밸런스. 별도의 고블린 귀, 오크 송곳니, 미노타우르스 유물 아이템·텍스처는 아직 미구현.
+- Loot table 데이터는 Java Edition 26.3의 `loot_table` 폴더 및 26.3 pool entry 필드 규칙을 참조했지만, 실제 몬스터 처치 시 드롭 확인 필요.
+- 자연 스폰 빈도 및 보스 드롭은 플레이테스트로 밸런스 조정 예정.
+
+### 26.3 근거
+- Fabric 26.3 BiomeModifications 소스 (`addSpawn`): https://raw.githubusercontent.com/FabricMC/fabric/26.3/fabric-biome-api-v1/src/main/java/net/fabricmc/fabric/api/biome/v1/BiomeModifications.java
+- Fabric 26.3 BiomeSelectors 소스 (`includeByKey`): https://raw.githubusercontent.com/FabricMC/fabric/26.3/fabric-biome-api-v1/src/main/java/net/fabricmc/fabric/api/biome/v1/BiomeSelectors.java
+- Minecraft 26.3 릴리스 기술 변경: https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3
+
+### GitHub Actions 후 인게임 테스트
+1. `/summon miggi_exploration:goblin ~ ~ ~` 등 4종 소환 후 처치해 RPG XP와 드롭 확인.
+2. 난이도를 평화로움 이외로 설정한 후 숲·어두운 숲·타이가에서 자연 생성 확인. 조명과 주변 적대적 몬스터 수에 영향받음.
+3. 미노타우르스가 오버월드에서 자연 생성되지 않는지 확인.
+4. 클라이언트에 4종 모델·텍스처가 정상 출력되는지 확인 (`Actions` 전용 서버 부팅만으로 판정 불가).

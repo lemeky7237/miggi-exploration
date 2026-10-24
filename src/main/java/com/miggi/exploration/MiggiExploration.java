@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import com.miggi.exploration.mobs.FantasyMonster;
 import com.miggi.exploration.mobs.MinotaurEntity;
 import com.miggi.exploration.mobs.ModMobs;
+import com.miggi.exploration.mobs.MonsterSpawns;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -39,6 +40,7 @@ public class MiggiExploration implements ModInitializer {
 
     @Override public void onInitialize() {
         ModMobs.initialize();
+        MonsterSpawns.register();
 
         // RPG XP for killing a fantasy monster (arrows etc. count: getEntity() is the shooter).
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
