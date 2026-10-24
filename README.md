@@ -254,3 +254,20 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - Java 25/Fabric 26.3 빌드 및 전용 서버 부팅은 이번 수정본에 대해 **실행 검증 전**. GitHub Actions에서 다시 확인해야 함.
 - 신규 마력목 자연 생성, 유적 자연 생성, 클라이언트 텍스처 표시·블록 드롭은 인게임 미검증.
 - 공식 타입 참조: `LeavesBlock(AmbientLeavesBlockSoundPlayer, Properties)` 및 `AmbientLeavesBlockSoundPlayer.noAmbientSound()` (Minecraft 26.3).
+
+
+## v0.8.5 — Minecraft 26.3 마력목 서버 부팅 오류 수정
+
+### 이번에 바뀐 것
+- `worldgen/feature/arcane_tree.json`의 누락된 `below_trunk_provider`를 추가했습니다.
+- 트렁크와 잎 블록 상태 공급자를 `minecraft:simple_state_provider`에서 26.3의 `minecraft:simple`로 변경했습니다.
+- 상태 필드를 `Name`/`Properties`에서 26.3의 `id`/`properties`로 수정했습니다.
+- 다른 worldgen JSON에서 해당 구형 표기가 남아 있는지 검색했고, JSON 파싱을 확인했습니다.
+- 기존 탐험·RPG·몹·텍스처·유적 데이터는 유지했습니다.
+- `build.gradle`, `gradle.properties`, `.github`는 수정하지 않았습니다. 삭제한 파일은 없습니다.
+
+### 아직 안 된 것 / 확인 필요
+- Java 25를 이용한 GitHub Actions 컴파일 및 전용 서버 부팅 검사는 **아직 실행하지 못했습니다**.
+- 마법 나무의 자연 생성, 유적의 `/place structure` 및 자연 생성, 실제 텍스처 렌더링은 아직 인게임 검증이 필요합니다.
+- 외부 라이브러리나 모드는 이번 수정에서 추가하지 않았습니다.
+- 자료: https://www.minecraft.net/ko-kr/article/minecraft-java-edition-26-3 및 https://www.fabricmc.net/2026/09/15/263.html
