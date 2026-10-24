@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "miggi_exploration:block/rune_altar"
+    "top": "miggi_exploration:block/rune_altar",
+    "side": "miggi_exploration:block/rune_stone",
+    "bottom": "miggi_exploration:block/rune_stone"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "miggi_exploration:block/arcane_log_top",
+    "side": "miggi_exploration:block/arcane_log"
+  }
+}

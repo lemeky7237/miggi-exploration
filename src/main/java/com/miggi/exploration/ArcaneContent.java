@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -18,6 +19,16 @@ public final class ArcaneContent {
     private static Block block(String name, BlockBehaviour.Properties settings) {
         ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, MiggiExploration.id(name));
         Block result = Registry.register(BuiltInRegistries.BLOCK, blockKey, new Block(settings.setId(blockKey)));
+        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, MiggiExploration.id(name));
+        Registry.register(BuiltInRegistries.ITEM, itemKey,
+            new BlockItem(result, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
+        return result;
+    }
+    /** A real log: has an axis (rotates when placed sideways) and counts as a log for leaf decay. */
+    private static Block log(String name) {
+        ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, MiggiExploration.id(name));
+        Block result = Registry.register(BuiltInRegistries.BLOCK, blockKey,
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).setId(blockKey)));
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, MiggiExploration.id(name));
         Registry.register(BuiltInRegistries.ITEM, itemKey,
             new BlockItem(result, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix()));
@@ -37,7 +48,7 @@ public final class ArcaneContent {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, MiggiExploration.id(name));
         return Registry.register(BuiltInRegistries.ITEM, key, new Item(new Item.Properties().setId(key)));
     }
-    public static final Block ARCANE_LOG = block("arcane_log", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+    public static final Block ARCANE_LOG = log("arcane_log");
     public static final Block ARCANE_LEAVES = leaves("arcane_leaves");
     public static final Block RUNE_STONE = block("rune_stone", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS));
     public static final Block CRACKED_RUNE_STONE = block("cracked_rune_stone", BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS));

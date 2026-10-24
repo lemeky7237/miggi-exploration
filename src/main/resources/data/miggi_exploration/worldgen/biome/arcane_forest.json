@@ -19,7 +19,6 @@
   ],
   "features": [
     [],
-    [],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -27,6 +26,7 @@
     [
       "minecraft:amethyst_geode"
     ],
+    [],
     [],
     [],
     [
@@ -46,16 +46,16 @@
       "minecraft:ore_diamond",
       "minecraft:ore_lapis"
     ],
+    [],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
-    [],
     [
+      "minecraft:glow_lichen",
       "miggi_exploration:ancient_arcane_tree",
       "miggi_exploration:arcane_tree",
       "miggi_exploration:young_arcane_tree",
-      "minecraft:glow_lichen",
       "minecraft:flower_forest_flowers",
       "minecraft:patch_grass_forest",
       "minecraft:patch_sugar_cane",

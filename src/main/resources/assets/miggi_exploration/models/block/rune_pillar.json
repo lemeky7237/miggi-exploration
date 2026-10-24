@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "miggi_exploration:block/rune_pillar"
+    "end": "miggi_exploration:block/rune_stone",
+    "side": "miggi_exploration:block/rune_pillar"
   }
 }

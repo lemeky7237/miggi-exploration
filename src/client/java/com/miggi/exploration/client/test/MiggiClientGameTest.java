@@ -73,6 +73,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
 
             combat(ctx, sp, server);
             structures(ctx, sp, server);
+            showcase(ctx, sp, server);
         } catch (Throwable t) {
             log("FAIL flat world: " + t);
         }
@@ -284,12 +285,17 @@ public class MiggiClientGameTest implements FabricClientGameTest {
             log("arcane forest at: " + where);
             if (!where.equals("none")) {
                 String[] xz = where.split(" ");
-                cmd(server, "tp @p " + xz[0] + " 140 " + xz[1] + " 0 50");
+                cmd(server, "gamemode spectator @p");
+                int fx = Integer.parseInt(xz[0]), fz = Integer.parseInt(xz[1]);
+                cmd(server, "forceload add " + (fx - 32) + " " + (fz - 32) + " " + (fx + 32) + " " + (fz + 32));
+                cmd(server, "tp @p " + fx + " 130 " + (fz - 40) + " 0 35");
                 sp.getConnection().waitForChunksRender();
                 ctx.waitTicks(40);
                 sp.getConnection().waitForChunksRender();
                 ctx.takeScreenshot("world_arcane_forest_air");
-                cmd(server, "spreadplayers " + xz[0] + " " + xz[1] + " 0 4 false @p");
+                int ground = server.computeOnServer(s -> s.overworld().getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, fx, fz));
+                log("arcane forest ground height " + ground);
+                cmd(server, "tp @p " + fx + " " + (ground + 2) + " " + fz + " 30 5");
                 sp.getConnection().waitForChunksRender();
                 ctx.waitTicks(30);
                 ctx.takeScreenshot("world_arcane_forest_ground");
@@ -303,6 +309,7 @@ public class MiggiClientGameTest implements FabricClientGameTest {
     // ------------------------------------------------------------------ structures
 
     private void structures(ClientGameTestContext ctx, TestSingleplayerContext sp, TestServerContext server) {
+        cmd(server, "gamemode spectator @p");
         String[] templates = {"arcane_grove", "arcane_watchtower", "forgotten_ruin", "labyrinth_entrance", "labyrinth_trial", "labyrinth_vault"};
         int x = 400;
         for (String t : templates) {
@@ -335,5 +342,31 @@ public class MiggiClientGameTest implements FabricClientGameTest {
             });
             x += 200;
         }
+        cmd(server, "gamemode creative @p");
+    }
+
+    // ------------------------------------------------------------------ blocks and items
+
+    private void showcase(ClientGameTestContext ctx, TestSingleplayerContext sp, TestServerContext server) {
+        section("blocks + items", () -> {
+            clear(server);
+            cmd(server, "gamemode creative @p");
+            cmd(server, "tp @p 3000.5 -60 -6.5 0 12");
+            cmd(server, "forceload add 2990 -16 3020 16");
+            sp.getConnection().waitForChunksRender();
+            String[] blocks = {"arcane_log", "arcane_log[axis=x]", "ancient_bark", "arcane_planks", "arcane_leaves",
+                "rune_stone", "cracked_rune_stone", "mossy_rune_stone", "glowing_rune_stone", "rune_pillar", "rune_altar"};
+            for (int i = 0; i < blocks.length; i++) {
+                int bx = 2994 + i;
+                cmd(server, "setblock " + bx + " -60 0 miggi_exploration:" + blocks[i]);
+                cmd(server, "setblock " + bx + " -59 0 miggi_exploration:" + blocks[i]);
+            }
+            cmd(server, "clear @p");
+            String[] items = {"arcane_shard", "goblin_talisman", "orc_fang", "minotaur_horn", "ancient_tablet", "arcane_log", "arcane_leaves", "rune_altar", "glowing_rune_stone"};
+            for (String it : items) cmd(server, "give @p miggi_exploration:" + it);
+            ctx.waitTicks(20);
+            sp.getConnection().waitForChunksRender();
+            ctx.takeScreenshot("blocks_and_items");
+        });
     }
 }
