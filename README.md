@@ -174,3 +174,16 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 고대 유적 생성 보장 아님: biome 조건과 structure_set spacing 모두 충족해야 생성. 새로운 월드 또는 신규 청크에서 테스트해야 함.
 - `/locate biome miggi_exploration:arcane_forest` 및 `/locate structure miggi_exploration:forgotten_ruin`으로 시험. Biolith v3.8 배치 데이터 실제 적용 여부 확인 필요.
 - 게임에 Biolith 의존성을 추가하는 것 자체가 기존 CI 설계에 적합하지 않다면, 자동 바이옴 배치를 비활성화하고 바이옴 정의/구조물만 유지한 다음 다른 호환 방식으로 변경해야 함.
+
+
+## v0.8.1 — 26.3 월드 생성 부팅 오류 수정
+### 이번에 바뀐 것
+- `worldgen/biome/arcane_forest.json`: 서버 레지스트리에서 찾지 못한 배치 기능 `minecraft:trees_birch_and_oak` 참조 제거. **이 패치는 대체 나무 생성 ID가 확인될 때까지 해당 나무 생성을 임시 비활성화**한다. 나머지 기존 feature는 유지. 마법 숲은 제단 구조물과 바이옴으로 계속 등록되지만 숲다운 밀도는 추가 개선 필요.
+- `worldgen/structure/arcane_grove.json`, `forgotten_ruin.json`: 26.3 코덱에서 요구한 `use_expansion_hack: false` 명시.
+- 기존 탐험 도전과제·RPG·몬스터·NBT 구조물·Biolith 데이터 변경 없음. 기존 파일 **삭제 없음**. `build.gradle`, `gradle.properties`, `.github` 변경 없음. 새 의존성 없음.
+
+### 아직 안 된 것 / 확인 필요
+- 이 ZIP에 대한 Java 25 컴파일·전용 서버 부팅·게임 실행은 **미검증**. GitHub Actions에서 재검사 필요.
+- 바닐라 placed feature 목록을 Minecraft 26.3 레지스트리에서 추출해, 마법 숲에 맞는 정상 나무 배치 기능을 재설정할 것. 다른 잘못된 ID가 있으면 서버가 추가 오류를 출력할 수 있다.
+- Biolith 설치 환경에서 바이옴 대체가 적용되는지 및 유적이 실제 바이옴 내부에 생성되는지 인게임 확인 필요.
+- GitHub 웹 업로드 시 원본에서 삭제되는 파일 없음.
