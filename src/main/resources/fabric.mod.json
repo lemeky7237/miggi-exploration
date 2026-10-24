@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "miggi_exploration",
+  "version": "${version}",
+  "name": "미끼탐험모드 (Miggi Exploration)",
+  "description": "Exploration journal, new-place scroll banners, exploration challenges with titles, and seven treasures hidden in structure chests.",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.miggi.exploration.MiggiExploration"
+    ],
+    "client": [
+      "com.miggi.exploration.client.MiggiClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

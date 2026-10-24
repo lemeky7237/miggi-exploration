@@ -1,0 +1,84 @@
+name: Build Miggi Exploration Mod
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '9.7.1'
+      - name: Compile mod
+        shell: bash
+        run: |
+          set +e
+          gradle build --stacktrace > build.log 2>&1
+          status=$?
+          if [ $status -ne 0 ]; then
+            # Surface the important part of the log as annotations (readable through the API).
+            python3 - <<'EOF'
+          import re
+          log = open('build.log', encoding='utf-8', errors='replace').read().splitlines()
+          keep = []
+          for i, l in enumerate(log):
+              if re.search(r'error:|What went wrong|Could not|Caused by|FAILURE|> ', l):
+                  keep.extend(log[i:i+4])
+          if not keep:
+              keep = log[-120:]
+          seen = []; [seen.append(k) for k in keep if k not in seen]
+          text = '\n'.join(seen)
+          chunks = [text[i:i+3500] for i in range(0, len(text), 3500)][:12]
+          for c in chunks:
+              print('::error::' + c.replace('%', '%25').replace('\r', '').replace('\n', '%0A'))
+          EOF
+          fi
+          tail -200 build.log
+          exit $status
+      - name: Smoke test - boot a dedicated server with the mod
+        shell: bash
+        run: |
+          mkdir -p run && echo "eula=true" > run/eula.txt
+          printf 'online-mode=false\nlevel-type=minecraft\\:flat\n' > run/server.properties
+          (gradle runServer --args="nogui" > server.log 2>&1 &) 
+          for i in $(seq 1 120); do
+            if grep -q 'Done (' server.log; then echo "SERVER STARTED OK"; break; fi
+            if grep -qiE 'Crash report|Failed to start|Exception in server tick loop|Encountered an unexpected exception' server.log; then break; fi
+            sleep 5
+          done
+          pkill -f 'runServer|net.fabricmc' || true
+          grep -E 'miggi_exploration|ERROR|Exception|Done \(' server.log | head -60
+          if ! grep -q 'Done (' server.log; then
+            tail -150 server.log
+            python3 - <<'PY'
+          log=open('server.log',encoding='utf-8',errors='replace').read().splitlines()
+          import re
+          keep=[l for l in log if re.search(r'ERROR|Exception|Caused by|at com\.miggi|miggi_exploration',l)][:80] or log[-80:]
+          t='\n'.join(keep)
+          for c in [t[i:i+3500] for i in range(0,len(t),3500)][:8]:
+              print('::error::'+c.replace('%','%25').replace('\r','').replace('\n','%0A'))
+          PY
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: miggi-exploration-jar
+          path: build/libs/*.jar
+      - name: Publish jar to 'jar' branch
+        shell: bash
+        run: |
+          mkdir out && cp build/libs/*.jar out/ && rm -f out/*-sources.jar
+          cd out
+          git init -q -b jar
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Build ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" jar
