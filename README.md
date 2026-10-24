@@ -1,3 +1,16 @@
+
+## v0.9.1 - 서버 시작 오류 수정 (2026-10-24)
+
+**이번에 바뀐 것**
+- `ArcaneContent.java`에서 `ancient_bark`를 일반 `Block`으로 등록하면서 `Blocks.OAK_LOG` 속성을 복사한 오류 수정. 일반 `Block`은 `axis` 상태를 정의하지 않으므로 26.3에서 블록 초기화 중 `IllegalArgumentException` 발생.
+- `ancient_bark`의 속성 복사 원본을 `Blocks.OAK_PLANKS`로 수정. 기존 텍스처, 모델, 아이템 ID, 자연 생성 파일과 나머지 콘텐츠 유지.
+- 기존 `build.gradle`, `gradle.properties`, `.github` 변경 없음. 삭제 파일 없음. 새 의존성 없음.
+
+**아직 안 된 것 / 확인 필요**
+- 이 v0.9.1 ZIP의 Java 25 GitHub Actions 컴파일 및 전용 서버 부팅은 아직 검증하지 못함.
+- 인게임 모델, 나무 자연 생성 및 유적 배치의 실제 성공 여부는 별도 테스트 필요.
+- `ancient_bark`는 현재 방향 전환(`axis`) 없는 일반 블록이며, 향후 회전 가능한 원목이 필요하면 `RotatedPillarBlock` 및 블록스테이트 모델을 함께 구현해야 함.
+
 # 미끼탐험모드 (Miggi Exploration)
 
 Fabric 모드 · Minecraft 26.3 · Java 25 · Fabric Loader 0.19.5 · Fabric API 0.164.0+26.3

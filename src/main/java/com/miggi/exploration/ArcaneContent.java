@@ -44,7 +44,7 @@ public final class ArcaneContent {
     public static final Block GLOWING_RUNE_STONE = block("glowing_rune_stone", BlockBehaviour.Properties.ofFullCopy(Blocks.SEA_LANTERN));
     public static final Item ARCANE_SHARD = item("arcane_shard");
     public static final Block ARCANE_PLANKS = block("arcane_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
-    public static final Block ANCIENT_BARK = block("ancient_bark", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
+    public static final Block ANCIENT_BARK = block("ancient_bark", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
     public static final Block MOSSY_RUNE_STONE = block("mossy_rune_stone", BlockBehaviour.Properties.ofFullCopy(Blocks.MOSSY_STONE_BRICKS));
     public static final Block RUNE_PILLAR = block("rune_pillar", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS));
     public static final Block RUNE_ALTAR = block("rune_altar", BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS));
