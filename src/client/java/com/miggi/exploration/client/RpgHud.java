@@ -17,7 +17,21 @@ public final class RpgHud {
         RpgData data = player.getAttachedOrElse(MiggiExploration.RPG_DATA, RpgData.INITIAL);
         var font = Minecraft.getInstance().font;
         String xp = data.level() >= RpgSystem.LEVEL_CAP ? "MAX" : data.xp() + "/" + RpgSystem.xpToNext(data.level());
-        graphics.text(font, Component.literal("Lv." + data.level() + "  XP " + xp), 8, graphics.guiHeight() - 48, 0xFFFFD080, true);
-        graphics.text(font, Component.literal("MP " + data.mana() + "/" + data.maxMana()), 8, graphics.guiHeight() - 36, 0xFF80C8FF, true);
+        // Top-left panel (bottom-left is where chat lines appear).
+        int x = 6, y = 6, w = 104;
+        graphics.fill(x - 3, y - 3, x + w + 3, y + 33, 0x90000000);
+        graphics.text(font, Component.literal("Lv." + data.level()), x, y, 0xFFFFD080, true);
+        Component xpText = Component.literal("XP " + xp);
+        graphics.text(font, xpText, x + w - font.width(xpText), y, 0xFFE8D8B0, true);
+        float xpFrac = data.level() >= RpgSystem.LEVEL_CAP ? 1f : data.xp() / (float) Math.max(1, RpgSystem.xpToNext(data.level()));
+        bar(graphics, x, y + 10, w, xpFrac, 0xFFE0B040);
+        Component mp = Component.literal("MP " + data.mana() + "/" + data.maxMana());
+        graphics.text(font, mp, x, y + 16, 0xFF80C8FF, true);
+        bar(graphics, x, y + 26, w, data.mana() / (float) Math.max(1, data.maxMana()), 0xFF4A90E0);
+    }
+
+    private static void bar(GuiGraphicsExtractor g, int x, int y, int w, float frac, int color) {
+        g.fill(x, y, x + w, y + 3, 0xFF202020);
+        g.fill(x, y, x + Math.round(w * Math.max(0f, Math.min(1f, frac))), y + 3, color);
     }
 }

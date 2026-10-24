@@ -47,7 +47,12 @@ public class MiggiClient implements ClientModInitializer {
 
         // After joining, the server syncs the whole record at once: don't celebrate old discoveries.
         if (player != lastPlayer) { lastPlayer = player; last = data; settleTicks = 60; return; }
-        if (settleTicks > 0) { settleTicks--; last = data; return; }
+        if (settleTicks > 0) {
+            settleTicks--;
+            // A brand-new player's very first discovery also lands in this window: still announce that one.
+            boolean firstEver = last.places().isEmpty() && data.places().size() <= 1 && data.challenges().size() <= 1;
+            if (!firstEver) { last = data; return; }
+        }
         if (data.equals(last)) return;
 
         int newPlaces = 0;

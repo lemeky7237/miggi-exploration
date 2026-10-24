@@ -13,10 +13,10 @@ public final class FantasyRenderers {
     public static final ModelLayerLocation BOAR = new ModelLayerLocation(MiggiExploration.id("wild_boar"),"main");
     public static final ModelLayerLocation MINOTAUR = new ModelLayerLocation(MiggiExploration.id("minotaur"),"main");
     public static void register() {
-        ModelLayerRegistry.registerModelLayer(GOBLIN,FantasyModel::goblin);
-        ModelLayerRegistry.registerModelLayer(ORC,FantasyModel::orc);
-        ModelLayerRegistry.registerModelLayer(BOAR,FantasyModel::boar);
-        ModelLayerRegistry.registerModelLayer(MINOTAUR,FantasyModel::minotaur);
+        ModelLayerRegistry.registerModelLayer(GOBLIN,MobLayers::goblin);
+        ModelLayerRegistry.registerModelLayer(ORC,MobLayers::orc);
+        ModelLayerRegistry.registerModelLayer(BOAR,MobLayers::wildBoar);
+        ModelLayerRegistry.registerModelLayer(MINOTAUR,MobLayers::minotaur);
         EntityRenderers.register(ModMobs.GOBLIN,c->new FantasyMobRenderer<>(c,GOBLIN,"goblin",0,0.35f));
         EntityRenderers.register(ModMobs.ORC,c->new FantasyMobRenderer<>(c,ORC,"orc",1,0.65f));
         EntityRenderers.register(ModMobs.WILD_BOAR,c->new FantasyMobRenderer<>(c,BOAR,"wild_boar",2,0.65f));

@@ -41,13 +41,17 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 .adjustSettings(c -> c.setGameMode(WorldCreationUiState.SelectedGameMode.CREATIVE))
                 .create()) {
             TestServerContext server = sp.getServer();
+            ctx.getInput().resizeWindow(1280, 720);
             sp.getConnection().waitForChunksRender();
+            for (String rule : new String[]{"send_command_feedback", "sendCommandFeedback", "log_admin_commands", "logAdminCommands"}) {
+                cmd(server, "gamerule " + rule + " false");
+            }
             cmd(server, "time set noon");
             cmd(server, "weather clear");
             cmd(server, "difficulty normal");
 
             section("exploration ui", () -> {
-                ctx.waitTicks(40);
+                ctx.waitTicks(25);
                 ctx.takeScreenshot("00_join_hud_banner");
                 ctx.setScreen(JournalScreen::new);
                 ctx.waitTicks(5);
@@ -155,7 +159,8 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 var list = find(s, type);
                 if (list.isEmpty()) return Double.NaN;
                 FantasyMonster m = list.get(0);
-                m.getNavigation().moveTo(m.getX() - 10, m.getY(), m.getZ(), 1.0);
+                boolean ok = m.getNavigation().moveTo(m.getX() - 10, m.getY(), m.getZ(), 1.0);
+                log(name + " path found=" + ok + " onGround=" + m.onGround() + " y=" + m.getY());
                 return m.getX();
             });
             ctx.waitTicks(14);
@@ -187,7 +192,18 @@ public class MiggiClientGameTest implements FabricClientGameTest {
                 cmd(server, "effect give @p minecraft:instant_health 1 5 true");
                 cmd(server, String.format("summon miggi_exploration:%s 0.5 -60 %.1f {PersistenceRequired:1b}", n, 0.5 + d));
                 int ticks = n.equals("minotaur") ? 260 : 160;
-                ctx.waitTicks(ticks);
+                for (int k = 0; k < ticks; k += 40) {
+                    ctx.waitTicks(40);
+                    String probe = server.computeOnServer(s -> {
+                        var list = find(s, type);
+                        ServerPlayer p = s.getPlayerList().getPlayers().get(0);
+                        if (list.isEmpty()) return "missing";
+                        FantasyMonster m = list.get(0);
+                        return String.format("dist=%.2f hp(player)=%.1f navDone=%s target=%s aggressive=%s",
+                            m.distanceTo(p), p.getHealth(), m.getNavigation().isDone(), m.getTarget() != null, m.isAggressive());
+                    });
+                    log("  " + n + " t+" + (k + 40) + ": " + probe);
+                }
                 if (n.equals("minotaur")) ctx.takeScreenshot("combat_minotaur");
                 String stats = server.computeOnServer(s -> {
                     var list = find(s, type);
@@ -235,8 +251,10 @@ public class MiggiClientGameTest implements FabricClientGameTest {
             int bx = x;
             section("template " + t, () -> {
                 cmd(server, "kill @e[type=!player]");
-                cmd(server, "tp @p " + (bx + 20) + " -20 " + (-30) + " 0 35");
+                cmd(server, "tp @p " + (bx + 22) + " -30 " + (-26) + " 0 40");
+                cmd(server, "forceload add " + (bx - 16) + " -16 " + (bx + 64) + " 64");
                 sp.getConnection().waitForChunksRender();
+                ctx.waitTicks(10);
                 cmd(server, "place template miggi_exploration:" + t + " " + bx + " -60 0");
                 ctx.waitTicks(20);
                 sp.getConnection().waitForChunksRender();
@@ -248,8 +266,10 @@ public class MiggiClientGameTest implements FabricClientGameTest {
         for (String t : structs) {
             int bx = x;
             section("structure " + t, () -> {
-                cmd(server, "tp @p " + (bx + 20) + " -20 " + (-30) + " 0 35");
+                cmd(server, "tp @p " + (bx + 22) + " -30 " + (-26) + " 0 40");
+                cmd(server, "forceload add " + (bx - 64) + " -64 " + (bx + 96) + " 96");
                 sp.getConnection().waitForChunksRender();
+                ctx.waitTicks(10);
                 cmd(server, "place structure miggi_exploration:" + t + " " + bx + " -60 0");
                 ctx.waitTicks(20);
                 sp.getConnection().waitForChunksRender();
