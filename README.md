@@ -61,3 +61,12 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
 - 사망 시 attachment는 복사되어 레벨/XP가 유지된다. 사망 후 리스폰 시 `ServerPlayerEvents.AFTER_RESPAWN`에서 MP를 최대치로 복원한다.
 - 장래 아이템 확장용 `bonusMana` 필드를 지금부터 저장한다.
 - 주의: 이 수정본은 로컬에서 Java 25/Gradle 빌드가 불가능하여 컴파일 검증되지 않았다. GitHub Actions의 실제 빌드 및 서버 구동 로그를 확인한 뒤 통합해야 한다.
+
+## 몬스터 (v0.5 진행 중) — 현재 상태
+- 서버 쪽 완료·컴파일·서버 부팅 검사 통과: `mobs/` 패키지
+  - `FantasyMonster`: 공통 기반 (전용 AI 목표, 공격 예비동작 후 타격, 애니메이션 이벤트 동기화)
+  - 고블린(HP16, 공격3, XP15) / 오크(HP40, 공격8, 내려찍기·횡베기, XP40) / 멧돼지(HP30, 공격6, 들이받아 띄우기, XP20) / 미노타우르스(HP300, 공격14, 돌진·내려찍기, 보스, XP500)
+  - 처치 시 RPG XP: `MiggiExploration`의 `ServerLivingEntityEvents.AFTER_DEATH`
+  - 애니메이션 id·길이: `FantasyMonster.ANIM_*`, `animDuration()` / 클라이언트에서 `currentAnim(partial)`, `animTicks(partial)`로 읽음
+- **아직 없음: 클라이언트 렌더러·3D 모델·텍스처.** 렌더러 등록 전에는 클라이언트에서 소환하면 게임이 멈출 수 있음
+- 26.3에서 없는 것: `Zombie`/`Hoglin` 등 바닐라 몬스터 클래스 경로(옛 경로로 import 불가), `Entity.hurtMarked`, `options.hideGui`
