@@ -70,3 +70,25 @@ tools/art/                      위 텍스처를 만드는 파이썬 스크립�
   - 애니메이션 id·길이: `FantasyMonster.ANIM_*`, `animDuration()` / 클라이언트에서 `currentAnim(partial)`, `animTicks(partial)`로 읽음
 - **아직 없음: 클라이언트 렌더러·3D 모델·텍스처.** 렌더러 등록 전에는 클라이언트에서 소환하면 게임이 멈출 수 있음
 - 26.3에서 없는 것: `Zombie`/`Hoglin` 등 바닐라 몬스터 클래스 경로(옛 경로로 import 불가), `Entity.hurtMarked`, `options.hideGui`
+
+
+## v0.5 클라이언트 몬스터 렌더링 추가 (GPT 제작)
+### 이번에 바뀐 것
+- 기존 서버 `mobs/` 구현은 **수정하지 않음**. `MiggiClient`에 `FantasyRenderers.register()` 한 줄을 추가해 4종 엔티티 렌더러 및 모델 레이어를 등록.
+- `src/client/java/.../client/mobs/`에 `FantasyRenderState`, `FantasyModel`, `FantasyMobRenderer`, `FantasyRenderers` 추가.
+- 고블린(1.35), 오크(2.35), 멧돼지(1.5), 미노타우르스(3.2) 각각 다른 큐브 조합: 관절 피벗, 미노타우르스 뿔, 오크·미노타우르스의 도끼를 손 파츠의 자식으로 구성. 각 종별 충돌 판정은 기존 `ModMobs`에서 그대로 관리.
+- 128×128 PNG 텍스처 4장 및 ko_kr/en_us 몬스터 이름을 추가.
+- `FantasyMonster` 이벤트로 전달받는 공격 종류·진행 틱을 `FantasyRenderState`로 복사하고 `setupAnim`에서 걷기/공격/스턴 기본 포즈를 적용.
+- 신규 라이브러리, 빌드 설정, 서버 로직 변경, 파일 삭제 없음.
+
+### 아직 안 된 것 / 확인 필요
+- **GitHub Actions 컴파일과 실제 클라이언트 실행은 이 환경에서 확인하지 못함.** 전용 서버 부팅만으로는 클라이언트 렌더러 오류를 검출할 수 없음.
+- 특히 `ModelLayerRegistry`·`EntityRenderers`의 26.3 정확한 패키지 및 `LivingEntityRenderState` 시선각 필드(`xRot`, `yRot`)는 dev 빌드 에러가 나면 확인해야 함. 26.2 공식 예시에서 큰 구조를 참조했지만 26.3 로컬 컴파일 검증은 없음.
+- 텍스처는 초기형 픽셀 아틀라스이므로 정교한 UV 페인팅/추후 Blockbench 모델 개선이 필요.
+- 공격 포즈는 키프레임 기반 보간의 초안이고, 타격 순간/무기 손잡이 위치의 실제 시각적 검증은 미완료.
+- 월드 자동 스폰, 보스 미궁, 별도 사운드/입자, 인게임 스크린샷은 아직 구현/확인되지 않음.
+- **테스트:** dev Actions 컴파일 후, 반드시 클라이언트 JAR로 `/summon miggi_exploration:goblin`, `orc`, `wild_boar`, `minotaur`를 각각 실행하여 화면 출력·이동·공격·콘솔 오류를 확인할 것.
+
+### 기술 근거
+- Fabric 공식 엔티티 튜토리얼(26.2): https://docs.fabricmc.net/develop/entities/first-entity
+- Fabric 26.3 릴리스: https://www.fabricmc.net/2026/09/15/263.html

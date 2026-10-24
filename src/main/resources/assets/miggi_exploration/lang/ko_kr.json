@@ -48,5 +48,9 @@
   "challenge.miggi_exploration.end.title": "끝을 본 자",
   "challenge.miggi_exploration.world_walker": "세계를 누빈 자",
   "challenge.miggi_exploration.world_walker.desc": "장소 50곳 발견하기",
-  "challenge.miggi_exploration.world_walker.title": "세계를 누빈 자"
+  "challenge.miggi_exploration.world_walker.title": "세계를 누빈 자",
+  "entity.miggi_exploration.goblin": "고블린",
+  "entity.miggi_exploration.orc": "오크",
+  "entity.miggi_exploration.wild_boar": "멧돼지",
+  "entity.miggi_exploration.minotaur": "미노타우르스"
 }

@@ -3,6 +3,7 @@ package com.miggi.exploration.client;
 import com.miggi.exploration.Challenges;
 import com.miggi.exploration.ExploreData;
 import com.miggi.exploration.MiggiExploration;
+import com.miggi.exploration.client.mobs.FantasyRenderers;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -22,6 +23,7 @@ public class MiggiClient implements ClientModInitializer {
     private int settleTicks;
 
     @Override public void onInitializeClient() {
+        FantasyRenderers.register(); // four renderers before any entity enters a client world
         KeyMapping.Category category = KeyMapping.Category.register(MiggiExploration.id("main"));
         journalKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.miggi_exploration.journal",
             InputConstants.Type.KEYBOARD, SDLScancode.SDL_SCANCODE_J, category));

@@ -48,5 +48,9 @@
   "challenge.miggi_exploration.end.title": "One Who Saw the End",
   "challenge.miggi_exploration.world_walker": "World Walker",
   "challenge.miggi_exploration.world_walker.desc": "Discover 50 places",
-  "challenge.miggi_exploration.world_walker.title": "World Walker"
+  "challenge.miggi_exploration.world_walker.title": "World Walker",
+  "entity.miggi_exploration.goblin": "Goblin",
+  "entity.miggi_exploration.orc": "Orc",
+  "entity.miggi_exploration.wild_boar": "Wild Boar",
+  "entity.miggi_exploration.minotaur": "Minotaur"
 }
