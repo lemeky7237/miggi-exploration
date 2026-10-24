@@ -26,7 +26,7 @@ public class MiggiClient implements ClientModInitializer {
         journalKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.miggi_exploration.journal",
             InputConstants.Type.KEYBOARD, SDLScancode.SDL_SCANCODE_J, category));
 
-        MiggiExploration.openJournal = () -> Minecraft.getInstance().setScreen(new JournalScreen());
+        MiggiExploration.openJournal = () -> Minecraft.getInstance().gui.setScreen(new JournalScreen());
 
         HudElementRegistry.addLast(MiggiExploration.id("discovery_banner"), DiscoveryBanner::extract);
 
@@ -37,7 +37,7 @@ public class MiggiClient implements ClientModInitializer {
 
     private void tick(Minecraft client) {
         while (journalKey.consumeClick()) {
-            if (client.player != null && client.screen == null) client.setScreen(new JournalScreen());
+            if (client.player != null && client.gui.screen() == null) client.gui.setScreen(new JournalScreen());
         }
 
         LocalPlayer player = client.player;
